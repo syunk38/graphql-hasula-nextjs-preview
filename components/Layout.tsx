@@ -28,7 +28,7 @@ export const Layout: VFC<Props> = ({
                   Home
                 </a>
               </Link>
-              <Link href="local-state-a/">
+              <Link href="/local-state-a">
                 <a
                   data-testid="makevar-nav"
                   className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
