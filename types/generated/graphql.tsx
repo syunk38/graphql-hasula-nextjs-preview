@@ -1,250 +1,252 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions = {} as const;
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
+export type Maybe<T> = T | null
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>
+}
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>
+}
+const defaultOptions = {} as const
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  timestamptz: any;
-  uuid: any;
-};
-
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+  timestamptz: any
+  uuid: string
+}
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
-  _eq?: Maybe<Scalars['Int']>;
-  _gt?: Maybe<Scalars['Int']>;
-  _gte?: Maybe<Scalars['Int']>;
-  _in?: Maybe<Array<Scalars['Int']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['Int']>;
-  _lte?: Maybe<Scalars['Int']>;
-  _neq?: Maybe<Scalars['Int']>;
-  _nin?: Maybe<Array<Scalars['Int']>>;
-};
+  _eq?: Maybe<Scalars['Int']>
+  _gt?: Maybe<Scalars['Int']>
+  _gte?: Maybe<Scalars['Int']>
+  _in?: Maybe<Array<Scalars['Int']>>
+  _is_null?: Maybe<Scalars['Boolean']>
+  _lt?: Maybe<Scalars['Int']>
+  _lte?: Maybe<Scalars['Int']>
+  _neq?: Maybe<Scalars['Int']>
+  _nin?: Maybe<Array<Scalars['Int']>>
+}
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
-  _eq?: Maybe<Scalars['String']>;
-  _gt?: Maybe<Scalars['String']>;
-  _gte?: Maybe<Scalars['String']>;
+  _eq?: Maybe<Scalars['String']>
+  _gt?: Maybe<Scalars['String']>
+  _gte?: Maybe<Scalars['String']>
   /** does the column match the given case-insensitive pattern */
-  _ilike?: Maybe<Scalars['String']>;
-  _in?: Maybe<Array<Scalars['String']>>;
+  _ilike?: Maybe<Scalars['String']>
+  _in?: Maybe<Array<Scalars['String']>>
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: Maybe<Scalars['String']>;
-  _is_null?: Maybe<Scalars['Boolean']>;
+  _iregex?: Maybe<Scalars['String']>
+  _is_null?: Maybe<Scalars['Boolean']>
   /** does the column match the given pattern */
-  _like?: Maybe<Scalars['String']>;
-  _lt?: Maybe<Scalars['String']>;
-  _lte?: Maybe<Scalars['String']>;
-  _neq?: Maybe<Scalars['String']>;
+  _like?: Maybe<Scalars['String']>
+  _lt?: Maybe<Scalars['String']>
+  _lte?: Maybe<Scalars['String']>
+  _neq?: Maybe<Scalars['String']>
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: Maybe<Scalars['String']>;
-  _nin?: Maybe<Array<Scalars['String']>>;
+  _nilike?: Maybe<Scalars['String']>
+  _nin?: Maybe<Array<Scalars['String']>>
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: Maybe<Scalars['String']>;
+  _niregex?: Maybe<Scalars['String']>
   /** does the column NOT match the given pattern */
-  _nlike?: Maybe<Scalars['String']>;
+  _nlike?: Maybe<Scalars['String']>
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: Maybe<Scalars['String']>;
+  _nregex?: Maybe<Scalars['String']>
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: Maybe<Scalars['String']>;
+  _nsimilar?: Maybe<Scalars['String']>
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: Maybe<Scalars['String']>;
+  _regex?: Maybe<Scalars['String']>
   /** does the column match the given SQL regular expression */
-  _similar?: Maybe<Scalars['String']>;
-};
+  _similar?: Maybe<Scalars['String']>
+}
 
 /** ordering argument of a cursor */
 export enum Cursor_Ordering {
   /** ascending ordering of the cursor */
   Asc = 'ASC',
   /** descending ordering of the cursor */
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 /** columns and relationships of "customer" */
 export type Customer = {
-  __typename?: 'customer';
-  email?: Maybe<Scalars['String']>;
-  first_name?: Maybe<Scalars['String']>;
-  id: Scalars['Int'];
-  ip_address?: Maybe<Scalars['String']>;
-  last_name?: Maybe<Scalars['String']>;
+  __typename?: 'customer'
+  email?: Maybe<Scalars['String']>
+  first_name?: Maybe<Scalars['String']>
+  id: Scalars['Int']
+  ip_address?: Maybe<Scalars['String']>
+  last_name?: Maybe<Scalars['String']>
   /** An array relationship */
-  orders: Array<Order>;
+  orders: Array<Order>
   /** An aggregate relationship */
-  orders_aggregate: Order_Aggregate;
-  phone?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
-
+  orders_aggregate: Order_Aggregate
+  phone?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 /** columns and relationships of "customer" */
 export type CustomerOrdersArgs = {
-  distinct_on?: Maybe<Array<Order_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Order_Order_By>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Order_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Order_Order_By>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 /** columns and relationships of "customer" */
 export type CustomerOrders_AggregateArgs = {
-  distinct_on?: Maybe<Array<Order_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Order_Order_By>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
+  distinct_on?: Maybe<Array<Order_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Order_Order_By>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 /** aggregated selection of "customer" */
 export type Customer_Aggregate = {
-  __typename?: 'customer_aggregate';
-  aggregate?: Maybe<Customer_Aggregate_Fields>;
-  nodes: Array<Customer>;
-};
+  __typename?: 'customer_aggregate'
+  aggregate?: Maybe<Customer_Aggregate_Fields>
+  nodes: Array<Customer>
+}
 
 /** aggregate fields of "customer" */
 export type Customer_Aggregate_Fields = {
-  __typename?: 'customer_aggregate_fields';
-  avg?: Maybe<Customer_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Customer_Max_Fields>;
-  min?: Maybe<Customer_Min_Fields>;
-  stddev?: Maybe<Customer_Stddev_Fields>;
-  stddev_pop?: Maybe<Customer_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Customer_Stddev_Samp_Fields>;
-  sum?: Maybe<Customer_Sum_Fields>;
-  var_pop?: Maybe<Customer_Var_Pop_Fields>;
-  var_samp?: Maybe<Customer_Var_Samp_Fields>;
-  variance?: Maybe<Customer_Variance_Fields>;
-};
-
+  __typename?: 'customer_aggregate_fields'
+  avg?: Maybe<Customer_Avg_Fields>
+  count: Scalars['Int']
+  max?: Maybe<Customer_Max_Fields>
+  min?: Maybe<Customer_Min_Fields>
+  stddev?: Maybe<Customer_Stddev_Fields>
+  stddev_pop?: Maybe<Customer_Stddev_Pop_Fields>
+  stddev_samp?: Maybe<Customer_Stddev_Samp_Fields>
+  sum?: Maybe<Customer_Sum_Fields>
+  var_pop?: Maybe<Customer_Var_Pop_Fields>
+  var_samp?: Maybe<Customer_Var_Samp_Fields>
+  variance?: Maybe<Customer_Variance_Fields>
+}
 
 /** aggregate fields of "customer" */
 export type Customer_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Customer_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
+  columns?: Maybe<Array<Customer_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
 
 /** aggregate avg on columns */
 export type Customer_Avg_Fields = {
-  __typename?: 'customer_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_avg_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** Boolean expression to filter rows from the table "customer". All fields are combined with a logical 'AND'. */
 export type Customer_Bool_Exp = {
-  _and?: Maybe<Array<Customer_Bool_Exp>>;
-  _not?: Maybe<Customer_Bool_Exp>;
-  _or?: Maybe<Array<Customer_Bool_Exp>>;
-  email?: Maybe<String_Comparison_Exp>;
-  first_name?: Maybe<String_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  ip_address?: Maybe<String_Comparison_Exp>;
-  last_name?: Maybe<String_Comparison_Exp>;
-  orders?: Maybe<Order_Bool_Exp>;
-  orders_aggregate?: Maybe<Order_Aggregate_Bool_Exp>;
-  phone?: Maybe<String_Comparison_Exp>;
-  username?: Maybe<String_Comparison_Exp>;
-};
+  _and?: Maybe<Array<Customer_Bool_Exp>>
+  _not?: Maybe<Customer_Bool_Exp>
+  _or?: Maybe<Array<Customer_Bool_Exp>>
+  email?: Maybe<String_Comparison_Exp>
+  first_name?: Maybe<String_Comparison_Exp>
+  id?: Maybe<Int_Comparison_Exp>
+  ip_address?: Maybe<String_Comparison_Exp>
+  last_name?: Maybe<String_Comparison_Exp>
+  orders?: Maybe<Order_Bool_Exp>
+  orders_aggregate?: Maybe<Order_Aggregate_Bool_Exp>
+  phone?: Maybe<String_Comparison_Exp>
+  username?: Maybe<String_Comparison_Exp>
+}
 
 /** unique or primary key constraints on table "customer" */
 export enum Customer_Constraint {
   /** unique or primary key constraint on columns "id" */
-  CustomerPkey = 'customer_pkey'
+  CustomerPkey = 'customer_pkey',
 }
 
 /** input type for incrementing numeric columns in table "customer" */
 export type Customer_Inc_Input = {
-  id?: Maybe<Scalars['Int']>;
-};
+  id?: Maybe<Scalars['Int']>
+}
 
 /** input type for inserting data into table "customer" */
 export type Customer_Insert_Input = {
-  email?: Maybe<Scalars['String']>;
-  first_name?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  ip_address?: Maybe<Scalars['String']>;
-  last_name?: Maybe<Scalars['String']>;
-  orders?: Maybe<Order_Arr_Rel_Insert_Input>;
-  phone?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
+  email?: Maybe<Scalars['String']>
+  first_name?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  ip_address?: Maybe<Scalars['String']>
+  last_name?: Maybe<Scalars['String']>
+  orders?: Maybe<Order_Arr_Rel_Insert_Input>
+  phone?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 /** aggregate max on columns */
 export type Customer_Max_Fields = {
-  __typename?: 'customer_max_fields';
-  email?: Maybe<Scalars['String']>;
-  first_name?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  ip_address?: Maybe<Scalars['String']>;
-  last_name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
+  __typename?: 'customer_max_fields'
+  email?: Maybe<Scalars['String']>
+  first_name?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  ip_address?: Maybe<Scalars['String']>
+  last_name?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 /** aggregate min on columns */
 export type Customer_Min_Fields = {
-  __typename?: 'customer_min_fields';
-  email?: Maybe<Scalars['String']>;
-  first_name?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  ip_address?: Maybe<Scalars['String']>;
-  last_name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
+  __typename?: 'customer_min_fields'
+  email?: Maybe<Scalars['String']>
+  first_name?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  ip_address?: Maybe<Scalars['String']>
+  last_name?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 /** response of any mutation on the table "customer" */
 export type Customer_Mutation_Response = {
-  __typename?: 'customer_mutation_response';
+  __typename?: 'customer_mutation_response'
   /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
-  returning: Array<Customer>;
-};
+  returning: Array<Customer>
+}
 
 /** input type for inserting object relation for remote table "customer" */
 export type Customer_Obj_Rel_Insert_Input = {
-  data: Customer_Insert_Input;
+  data: Customer_Insert_Input
   /** upsert condition */
-  on_conflict?: Maybe<Customer_On_Conflict>;
-};
+  on_conflict?: Maybe<Customer_On_Conflict>
+}
 
 /** on_conflict condition type for table "customer" */
 export type Customer_On_Conflict = {
-  constraint: Customer_Constraint;
-  update_columns?: Array<Customer_Update_Column>;
-  where?: Maybe<Customer_Bool_Exp>;
-};
+  constraint: Customer_Constraint
+  update_columns?: Array<Customer_Update_Column>
+  where?: Maybe<Customer_Bool_Exp>
+}
 
 /** Ordering options when selecting data from "customer". */
 export type Customer_Order_By = {
-  email?: Maybe<Order_By>;
-  first_name?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  ip_address?: Maybe<Order_By>;
-  last_name?: Maybe<Order_By>;
-  orders_aggregate?: Maybe<Order_Aggregate_Order_By>;
-  phone?: Maybe<Order_By>;
-  username?: Maybe<Order_By>;
-};
+  email?: Maybe<Order_By>
+  first_name?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  ip_address?: Maybe<Order_By>
+  last_name?: Maybe<Order_By>
+  orders_aggregate?: Maybe<Order_Aggregate_Order_By>
+  phone?: Maybe<Order_By>
+  username?: Maybe<Order_By>
+}
 
 /** primary key columns input for table: customer */
 export type Customer_Pk_Columns_Input = {
-  id: Scalars['Int'];
-};
+  id: Scalars['Int']
+}
 
 /** select columns of table "customer" */
 export enum Customer_Select_Column {
@@ -261,62 +263,62 @@ export enum Customer_Select_Column {
   /** column name */
   Phone = 'phone',
   /** column name */
-  Username = 'username'
+  Username = 'username',
 }
 
 /** input type for updating data in table "customer" */
 export type Customer_Set_Input = {
-  email?: Maybe<Scalars['String']>;
-  first_name?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  ip_address?: Maybe<Scalars['String']>;
-  last_name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
+  email?: Maybe<Scalars['String']>
+  first_name?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  ip_address?: Maybe<Scalars['String']>
+  last_name?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 /** aggregate stddev on columns */
 export type Customer_Stddev_Fields = {
-  __typename?: 'customer_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_stddev_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** aggregate stddev_pop on columns */
 export type Customer_Stddev_Pop_Fields = {
-  __typename?: 'customer_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_stddev_pop_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** aggregate stddev_samp on columns */
 export type Customer_Stddev_Samp_Fields = {
-  __typename?: 'customer_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_stddev_samp_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** Streaming cursor of the table "customer" */
 export type Customer_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Customer_Stream_Cursor_Value_Input;
+  initial_value: Customer_Stream_Cursor_Value_Input
   /** cursor ordering */
-  ordering?: Maybe<Cursor_Ordering>;
-};
+  ordering?: Maybe<Cursor_Ordering>
+}
 
 /** Initial value of the column from where the streaming should start */
 export type Customer_Stream_Cursor_Value_Input = {
-  email?: Maybe<Scalars['String']>;
-  first_name?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  ip_address?: Maybe<Scalars['String']>;
-  last_name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
+  email?: Maybe<Scalars['String']>
+  first_name?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  ip_address?: Maybe<Scalars['String']>
+  last_name?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+  username?: Maybe<Scalars['String']>
+}
 
 /** aggregate sum on columns */
 export type Customer_Sum_Fields = {
-  __typename?: 'customer_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-};
+  __typename?: 'customer_sum_fields'
+  id?: Maybe<Scalars['Int']>
+}
 
 /** update columns of table "customer" */
 export enum Customer_Update_Column {
@@ -333,678 +335,634 @@ export enum Customer_Update_Column {
   /** column name */
   Phone = 'phone',
   /** column name */
-  Username = 'username'
+  Username = 'username',
 }
 
 export type Customer_Updates = {
   /** increments the numeric columns with given value of the filtered values */
-  _inc?: Maybe<Customer_Inc_Input>;
+  _inc?: Maybe<Customer_Inc_Input>
   /** sets the columns of the filtered rows to the given values */
-  _set?: Maybe<Customer_Set_Input>;
+  _set?: Maybe<Customer_Set_Input>
   /** filter the rows which have to be updated */
-  where: Customer_Bool_Exp;
-};
+  where: Customer_Bool_Exp
+}
 
 /** aggregate var_pop on columns */
 export type Customer_Var_Pop_Fields = {
-  __typename?: 'customer_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_var_pop_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** aggregate var_samp on columns */
 export type Customer_Var_Samp_Fields = {
-  __typename?: 'customer_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_var_samp_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** aggregate variance on columns */
 export type Customer_Variance_Fields = {
-  __typename?: 'customer_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'customer_variance_fields'
+  id?: Maybe<Scalars['Float']>
+}
 
 /** columns and relationships of "groups" */
 export type Groups = {
-  __typename?: 'groups';
-  id: Scalars['uuid'];
-  name: Scalars['String'];
+  __typename?: 'groups'
+  id: Scalars['uuid']
+  name: Scalars['String']
   /** An array relationship */
-  users: Array<Users>;
+  users: Array<Users>
   /** An aggregate relationship */
-  users_aggregate: Users_Aggregate;
-};
-
+  users_aggregate: Users_Aggregate
+}
 
 /** columns and relationships of "groups" */
 export type GroupsUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Users_Order_By>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 /** columns and relationships of "groups" */
 export type GroupsUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
+  distinct_on?: Maybe<Array<Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Users_Order_By>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 /** aggregated selection of "groups" */
 export type Groups_Aggregate = {
-  __typename?: 'groups_aggregate';
-  aggregate?: Maybe<Groups_Aggregate_Fields>;
-  nodes: Array<Groups>;
-};
+  __typename?: 'groups_aggregate'
+  aggregate?: Maybe<Groups_Aggregate_Fields>
+  nodes: Array<Groups>
+}
 
 /** aggregate fields of "groups" */
 export type Groups_Aggregate_Fields = {
-  __typename?: 'groups_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Groups_Max_Fields>;
-  min?: Maybe<Groups_Min_Fields>;
-};
-
+  __typename?: 'groups_aggregate_fields'
+  count: Scalars['Int']
+  max?: Maybe<Groups_Max_Fields>
+  min?: Maybe<Groups_Min_Fields>
+}
 
 /** aggregate fields of "groups" */
 export type Groups_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Groups_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
+  columns?: Maybe<Array<Groups_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
 
 /** Boolean expression to filter rows from the table "groups". All fields are combined with a logical 'AND'. */
 export type Groups_Bool_Exp = {
-  _and?: Maybe<Array<Groups_Bool_Exp>>;
-  _not?: Maybe<Groups_Bool_Exp>;
-  _or?: Maybe<Array<Groups_Bool_Exp>>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  users?: Maybe<Users_Bool_Exp>;
-  users_aggregate?: Maybe<Users_Aggregate_Bool_Exp>;
-};
+  _and?: Maybe<Array<Groups_Bool_Exp>>
+  _not?: Maybe<Groups_Bool_Exp>
+  _or?: Maybe<Array<Groups_Bool_Exp>>
+  id?: Maybe<Uuid_Comparison_Exp>
+  name?: Maybe<String_Comparison_Exp>
+  users?: Maybe<Users_Bool_Exp>
+  users_aggregate?: Maybe<Users_Aggregate_Bool_Exp>
+}
 
 /** unique or primary key constraints on table "groups" */
 export enum Groups_Constraint {
   /** unique or primary key constraint on columns "id" */
-  GroupsPkey = 'groups_pkey'
+  GroupsPkey = 'groups_pkey',
 }
 
 /** input type for inserting data into table "groups" */
 export type Groups_Insert_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-  users?: Maybe<Users_Arr_Rel_Insert_Input>;
-};
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+  users?: Maybe<Users_Arr_Rel_Insert_Input>
+}
 
 /** aggregate max on columns */
 export type Groups_Max_Fields = {
-  __typename?: 'groups_max_fields';
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-};
+  __typename?: 'groups_max_fields'
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+}
 
 /** aggregate min on columns */
 export type Groups_Min_Fields = {
-  __typename?: 'groups_min_fields';
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-};
+  __typename?: 'groups_min_fields'
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+}
 
 /** response of any mutation on the table "groups" */
 export type Groups_Mutation_Response = {
-  __typename?: 'groups_mutation_response';
+  __typename?: 'groups_mutation_response'
   /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
-  returning: Array<Groups>;
-};
+  returning: Array<Groups>
+}
 
 /** input type for inserting object relation for remote table "groups" */
 export type Groups_Obj_Rel_Insert_Input = {
-  data: Groups_Insert_Input;
+  data: Groups_Insert_Input
   /** upsert condition */
-  on_conflict?: Maybe<Groups_On_Conflict>;
-};
+  on_conflict?: Maybe<Groups_On_Conflict>
+}
 
 /** on_conflict condition type for table "groups" */
 export type Groups_On_Conflict = {
-  constraint: Groups_Constraint;
-  update_columns?: Array<Groups_Update_Column>;
-  where?: Maybe<Groups_Bool_Exp>;
-};
+  constraint: Groups_Constraint
+  update_columns?: Array<Groups_Update_Column>
+  where?: Maybe<Groups_Bool_Exp>
+}
 
 /** Ordering options when selecting data from "groups". */
 export type Groups_Order_By = {
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  users_aggregate?: Maybe<Users_Aggregate_Order_By>;
-};
+  id?: Maybe<Order_By>
+  name?: Maybe<Order_By>
+  users_aggregate?: Maybe<Users_Aggregate_Order_By>
+}
 
 /** primary key columns input for table: groups */
 export type Groups_Pk_Columns_Input = {
-  id: Scalars['uuid'];
-};
+  id: Scalars['uuid']
+}
 
 /** select columns of table "groups" */
 export enum Groups_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
 }
 
 /** input type for updating data in table "groups" */
 export type Groups_Set_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+}
 
 /** Streaming cursor of the table "groups" */
 export type Groups_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Groups_Stream_Cursor_Value_Input;
+  initial_value: Groups_Stream_Cursor_Value_Input
   /** cursor ordering */
-  ordering?: Maybe<Cursor_Ordering>;
-};
+  ordering?: Maybe<Cursor_Ordering>
+}
 
 /** Initial value of the column from where the streaming should start */
 export type Groups_Stream_Cursor_Value_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+}
 
 /** update columns of table "groups" */
 export enum Groups_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
 }
 
 export type Groups_Updates = {
   /** sets the columns of the filtered rows to the given values */
-  _set?: Maybe<Groups_Set_Input>;
+  _set?: Maybe<Groups_Set_Input>
   /** filter the rows which have to be updated */
-  where: Groups_Bool_Exp;
-};
+  where: Groups_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_Root = {
-  __typename?: 'mutation_root';
+  __typename?: 'mutation_root'
   /** delete data from the table: "customer" */
-  delete_customer?: Maybe<Customer_Mutation_Response>;
+  delete_customer?: Maybe<Customer_Mutation_Response>
   /** delete single row from the table: "customer" */
-  delete_customer_by_pk?: Maybe<Customer>;
+  delete_customer_by_pk?: Maybe<Customer>
   /** delete data from the table: "groups" */
-  delete_groups?: Maybe<Groups_Mutation_Response>;
+  delete_groups?: Maybe<Groups_Mutation_Response>
   /** delete single row from the table: "groups" */
-  delete_groups_by_pk?: Maybe<Groups>;
+  delete_groups_by_pk?: Maybe<Groups>
   /** delete data from the table: "order" */
-  delete_order?: Maybe<Order_Mutation_Response>;
+  delete_order?: Maybe<Order_Mutation_Response>
   /** delete single row from the table: "order" */
-  delete_order_by_pk?: Maybe<Order>;
+  delete_order_by_pk?: Maybe<Order>
   /** delete data from the table: "profile_users" */
-  delete_profile_users?: Maybe<Profile_Users_Mutation_Response>;
+  delete_profile_users?: Maybe<Profile_Users_Mutation_Response>
   /** delete single row from the table: "profile_users" */
-  delete_profile_users_by_pk?: Maybe<Profile_Users>;
+  delete_profile_users_by_pk?: Maybe<Profile_Users>
   /** delete data from the table: "profiles" */
-  delete_profiles?: Maybe<Profiles_Mutation_Response>;
+  delete_profiles?: Maybe<Profiles_Mutation_Response>
   /** delete single row from the table: "profiles" */
-  delete_profiles_by_pk?: Maybe<Profiles>;
+  delete_profiles_by_pk?: Maybe<Profiles>
   /** delete data from the table: "users" */
-  delete_users?: Maybe<Users_Mutation_Response>;
+  delete_users?: Maybe<Users_Mutation_Response>
   /** delete single row from the table: "users" */
-  delete_users_by_pk?: Maybe<Users>;
+  delete_users_by_pk?: Maybe<Users>
   /** insert data into the table: "customer" */
-  insert_customer?: Maybe<Customer_Mutation_Response>;
+  insert_customer?: Maybe<Customer_Mutation_Response>
   /** insert a single row into the table: "customer" */
-  insert_customer_one?: Maybe<Customer>;
+  insert_customer_one?: Maybe<Customer>
   /** insert data into the table: "groups" */
-  insert_groups?: Maybe<Groups_Mutation_Response>;
+  insert_groups?: Maybe<Groups_Mutation_Response>
   /** insert a single row into the table: "groups" */
-  insert_groups_one?: Maybe<Groups>;
+  insert_groups_one?: Maybe<Groups>
   /** insert data into the table: "order" */
-  insert_order?: Maybe<Order_Mutation_Response>;
+  insert_order?: Maybe<Order_Mutation_Response>
   /** insert a single row into the table: "order" */
-  insert_order_one?: Maybe<Order>;
+  insert_order_one?: Maybe<Order>
   /** insert data into the table: "profile_users" */
-  insert_profile_users?: Maybe<Profile_Users_Mutation_Response>;
+  insert_profile_users?: Maybe<Profile_Users_Mutation_Response>
   /** insert a single row into the table: "profile_users" */
-  insert_profile_users_one?: Maybe<Profile_Users>;
+  insert_profile_users_one?: Maybe<Profile_Users>
   /** insert data into the table: "profiles" */
-  insert_profiles?: Maybe<Profiles_Mutation_Response>;
+  insert_profiles?: Maybe<Profiles_Mutation_Response>
   /** insert a single row into the table: "profiles" */
-  insert_profiles_one?: Maybe<Profiles>;
+  insert_profiles_one?: Maybe<Profiles>
   /** insert data into the table: "users" */
-  insert_users?: Maybe<Users_Mutation_Response>;
+  insert_users?: Maybe<Users_Mutation_Response>
   /** insert a single row into the table: "users" */
-  insert_users_one?: Maybe<Users>;
+  insert_users_one?: Maybe<Users>
   /** update data of the table: "customer" */
-  update_customer?: Maybe<Customer_Mutation_Response>;
+  update_customer?: Maybe<Customer_Mutation_Response>
   /** update single row of the table: "customer" */
-  update_customer_by_pk?: Maybe<Customer>;
+  update_customer_by_pk?: Maybe<Customer>
   /** update multiples rows of table: "customer" */
-  update_customer_many?: Maybe<Array<Maybe<Customer_Mutation_Response>>>;
+  update_customer_many?: Maybe<Array<Maybe<Customer_Mutation_Response>>>
   /** update data of the table: "groups" */
-  update_groups?: Maybe<Groups_Mutation_Response>;
+  update_groups?: Maybe<Groups_Mutation_Response>
   /** update single row of the table: "groups" */
-  update_groups_by_pk?: Maybe<Groups>;
+  update_groups_by_pk?: Maybe<Groups>
   /** update multiples rows of table: "groups" */
-  update_groups_many?: Maybe<Array<Maybe<Groups_Mutation_Response>>>;
+  update_groups_many?: Maybe<Array<Maybe<Groups_Mutation_Response>>>
   /** update data of the table: "order" */
-  update_order?: Maybe<Order_Mutation_Response>;
+  update_order?: Maybe<Order_Mutation_Response>
   /** update single row of the table: "order" */
-  update_order_by_pk?: Maybe<Order>;
+  update_order_by_pk?: Maybe<Order>
   /** update multiples rows of table: "order" */
-  update_order_many?: Maybe<Array<Maybe<Order_Mutation_Response>>>;
+  update_order_many?: Maybe<Array<Maybe<Order_Mutation_Response>>>
   /** update data of the table: "profile_users" */
-  update_profile_users?: Maybe<Profile_Users_Mutation_Response>;
+  update_profile_users?: Maybe<Profile_Users_Mutation_Response>
   /** update single row of the table: "profile_users" */
-  update_profile_users_by_pk?: Maybe<Profile_Users>;
+  update_profile_users_by_pk?: Maybe<Profile_Users>
   /** update multiples rows of table: "profile_users" */
-  update_profile_users_many?: Maybe<Array<Maybe<Profile_Users_Mutation_Response>>>;
+  update_profile_users_many?: Maybe<
+    Array<Maybe<Profile_Users_Mutation_Response>>
+  >
   /** update data of the table: "profiles" */
-  update_profiles?: Maybe<Profiles_Mutation_Response>;
+  update_profiles?: Maybe<Profiles_Mutation_Response>
   /** update single row of the table: "profiles" */
-  update_profiles_by_pk?: Maybe<Profiles>;
+  update_profiles_by_pk?: Maybe<Profiles>
   /** update multiples rows of table: "profiles" */
-  update_profiles_many?: Maybe<Array<Maybe<Profiles_Mutation_Response>>>;
+  update_profiles_many?: Maybe<Array<Maybe<Profiles_Mutation_Response>>>
   /** update data of the table: "users" */
-  update_users?: Maybe<Users_Mutation_Response>;
+  update_users?: Maybe<Users_Mutation_Response>
   /** update single row of the table: "users" */
-  update_users_by_pk?: Maybe<Users>;
+  update_users_by_pk?: Maybe<Users>
   /** update multiples rows of table: "users" */
-  update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
-};
-
+  update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>
+}
 
 /** mutation root */
 export type Mutation_RootDelete_CustomerArgs = {
-  where: Customer_Bool_Exp;
-};
-
+  where: Customer_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Customer_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
+  id: Scalars['Int']
+}
 
 /** mutation root */
 export type Mutation_RootDelete_GroupsArgs = {
-  where: Groups_Bool_Exp;
-};
-
+  where: Groups_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Groups_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 /** mutation root */
 export type Mutation_RootDelete_OrderArgs = {
-  where: Order_Bool_Exp;
-};
-
+  where: Order_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Order_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
+  id: Scalars['Int']
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Profile_UsersArgs = {
-  where: Profile_Users_Bool_Exp;
-};
-
+  where: Profile_Users_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Profile_Users_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 /** mutation root */
 export type Mutation_RootDelete_ProfilesArgs = {
-  where: Profiles_Bool_Exp;
-};
-
+  where: Profiles_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Profiles_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 /** mutation root */
 export type Mutation_RootDelete_UsersArgs = {
-  where: Users_Bool_Exp;
-};
-
+  where: Users_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootDelete_Users_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 /** mutation root */
 export type Mutation_RootInsert_CustomerArgs = {
-  objects: Array<Customer_Insert_Input>;
-  on_conflict?: Maybe<Customer_On_Conflict>;
-};
-
+  objects: Array<Customer_Insert_Input>
+  on_conflict?: Maybe<Customer_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Customer_OneArgs = {
-  object: Customer_Insert_Input;
-  on_conflict?: Maybe<Customer_On_Conflict>;
-};
-
+  object: Customer_Insert_Input
+  on_conflict?: Maybe<Customer_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_GroupsArgs = {
-  objects: Array<Groups_Insert_Input>;
-  on_conflict?: Maybe<Groups_On_Conflict>;
-};
-
+  objects: Array<Groups_Insert_Input>
+  on_conflict?: Maybe<Groups_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Groups_OneArgs = {
-  object: Groups_Insert_Input;
-  on_conflict?: Maybe<Groups_On_Conflict>;
-};
-
+  object: Groups_Insert_Input
+  on_conflict?: Maybe<Groups_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_OrderArgs = {
-  objects: Array<Order_Insert_Input>;
-  on_conflict?: Maybe<Order_On_Conflict>;
-};
-
+  objects: Array<Order_Insert_Input>
+  on_conflict?: Maybe<Order_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Order_OneArgs = {
-  object: Order_Insert_Input;
-  on_conflict?: Maybe<Order_On_Conflict>;
-};
-
+  object: Order_Insert_Input
+  on_conflict?: Maybe<Order_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Profile_UsersArgs = {
-  objects: Array<Profile_Users_Insert_Input>;
-  on_conflict?: Maybe<Profile_Users_On_Conflict>;
-};
-
+  objects: Array<Profile_Users_Insert_Input>
+  on_conflict?: Maybe<Profile_Users_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Profile_Users_OneArgs = {
-  object: Profile_Users_Insert_Input;
-  on_conflict?: Maybe<Profile_Users_On_Conflict>;
-};
-
+  object: Profile_Users_Insert_Input
+  on_conflict?: Maybe<Profile_Users_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_ProfilesArgs = {
-  objects: Array<Profiles_Insert_Input>;
-  on_conflict?: Maybe<Profiles_On_Conflict>;
-};
-
+  objects: Array<Profiles_Insert_Input>
+  on_conflict?: Maybe<Profiles_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Profiles_OneArgs = {
-  object: Profiles_Insert_Input;
-  on_conflict?: Maybe<Profiles_On_Conflict>;
-};
-
+  object: Profiles_Insert_Input
+  on_conflict?: Maybe<Profiles_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
-  objects: Array<Users_Insert_Input>;
-  on_conflict?: Maybe<Users_On_Conflict>;
-};
-
+  objects: Array<Users_Insert_Input>
+  on_conflict?: Maybe<Users_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootInsert_Users_OneArgs = {
-  object: Users_Insert_Input;
-  on_conflict?: Maybe<Users_On_Conflict>;
-};
-
+  object: Users_Insert_Input
+  on_conflict?: Maybe<Users_On_Conflict>
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_CustomerArgs = {
-  _inc?: Maybe<Customer_Inc_Input>;
-  _set?: Maybe<Customer_Set_Input>;
-  where: Customer_Bool_Exp;
-};
-
+  _inc?: Maybe<Customer_Inc_Input>
+  _set?: Maybe<Customer_Set_Input>
+  where: Customer_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Customer_By_PkArgs = {
-  _inc?: Maybe<Customer_Inc_Input>;
-  _set?: Maybe<Customer_Set_Input>;
-  pk_columns: Customer_Pk_Columns_Input;
-};
-
+  _inc?: Maybe<Customer_Inc_Input>
+  _set?: Maybe<Customer_Set_Input>
+  pk_columns: Customer_Pk_Columns_Input
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Customer_ManyArgs = {
-  updates: Array<Customer_Updates>;
-};
-
+  updates: Array<Customer_Updates>
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_GroupsArgs = {
-  _set?: Maybe<Groups_Set_Input>;
-  where: Groups_Bool_Exp;
-};
-
+  _set?: Maybe<Groups_Set_Input>
+  where: Groups_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Groups_By_PkArgs = {
-  _set?: Maybe<Groups_Set_Input>;
-  pk_columns: Groups_Pk_Columns_Input;
-};
-
+  _set?: Maybe<Groups_Set_Input>
+  pk_columns: Groups_Pk_Columns_Input
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Groups_ManyArgs = {
-  updates: Array<Groups_Updates>;
-};
-
+  updates: Array<Groups_Updates>
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_OrderArgs = {
-  _inc?: Maybe<Order_Inc_Input>;
-  _set?: Maybe<Order_Set_Input>;
-  where: Order_Bool_Exp;
-};
-
+  _inc?: Maybe<Order_Inc_Input>
+  _set?: Maybe<Order_Set_Input>
+  where: Order_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Order_By_PkArgs = {
-  _inc?: Maybe<Order_Inc_Input>;
-  _set?: Maybe<Order_Set_Input>;
-  pk_columns: Order_Pk_Columns_Input;
-};
-
+  _inc?: Maybe<Order_Inc_Input>
+  _set?: Maybe<Order_Set_Input>
+  pk_columns: Order_Pk_Columns_Input
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Order_ManyArgs = {
-  updates: Array<Order_Updates>;
-};
-
+  updates: Array<Order_Updates>
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Profile_UsersArgs = {
-  _set?: Maybe<Profile_Users_Set_Input>;
-  where: Profile_Users_Bool_Exp;
-};
-
+  _set?: Maybe<Profile_Users_Set_Input>
+  where: Profile_Users_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Profile_Users_By_PkArgs = {
-  _set?: Maybe<Profile_Users_Set_Input>;
-  pk_columns: Profile_Users_Pk_Columns_Input;
-};
-
+  _set?: Maybe<Profile_Users_Set_Input>
+  pk_columns: Profile_Users_Pk_Columns_Input
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Profile_Users_ManyArgs = {
-  updates: Array<Profile_Users_Updates>;
-};
-
+  updates: Array<Profile_Users_Updates>
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_ProfilesArgs = {
-  _set?: Maybe<Profiles_Set_Input>;
-  where: Profiles_Bool_Exp;
-};
-
+  _set?: Maybe<Profiles_Set_Input>
+  where: Profiles_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Profiles_By_PkArgs = {
-  _set?: Maybe<Profiles_Set_Input>;
-  pk_columns: Profiles_Pk_Columns_Input;
-};
-
+  _set?: Maybe<Profiles_Set_Input>
+  pk_columns: Profiles_Pk_Columns_Input
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Profiles_ManyArgs = {
-  updates: Array<Profiles_Updates>;
-};
-
+  updates: Array<Profiles_Updates>
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
-  _set?: Maybe<Users_Set_Input>;
-  where: Users_Bool_Exp;
-};
-
+  _set?: Maybe<Users_Set_Input>
+  where: Users_Bool_Exp
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_By_PkArgs = {
-  _set?: Maybe<Users_Set_Input>;
-  pk_columns: Users_Pk_Columns_Input;
-};
-
+  _set?: Maybe<Users_Set_Input>
+  pk_columns: Users_Pk_Columns_Input
+}
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_ManyArgs = {
-  updates: Array<Users_Updates>;
-};
+  updates: Array<Users_Updates>
+}
 
 /** columns and relationships of "order" */
 export type Order = {
-  __typename?: 'order';
+  __typename?: 'order'
   /** An object relationship */
-  customer?: Maybe<Customer>;
-  customer_id?: Maybe<Scalars['Int']>;
-  discount_price?: Maybe<Scalars['String']>;
-  id: Scalars['Int'];
-  order_date?: Maybe<Scalars['String']>;
-  product?: Maybe<Scalars['String']>;
-  purchase_price?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['String']>;
-};
+  customer?: Maybe<Customer>
+  customer_id?: Maybe<Scalars['Int']>
+  discount_price?: Maybe<Scalars['String']>
+  id: Scalars['Int']
+  order_date?: Maybe<Scalars['String']>
+  product?: Maybe<Scalars['String']>
+  purchase_price?: Maybe<Scalars['String']>
+  transaction_id?: Maybe<Scalars['String']>
+}
 
 /** aggregated selection of "order" */
 export type Order_Aggregate = {
-  __typename?: 'order_aggregate';
-  aggregate?: Maybe<Order_Aggregate_Fields>;
-  nodes: Array<Order>;
-};
+  __typename?: 'order_aggregate'
+  aggregate?: Maybe<Order_Aggregate_Fields>
+  nodes: Array<Order>
+}
 
 export type Order_Aggregate_Bool_Exp = {
-  count?: Maybe<Order_Aggregate_Bool_Exp_Count>;
-};
+  count?: Maybe<Order_Aggregate_Bool_Exp_Count>
+}
 
 export type Order_Aggregate_Bool_Exp_Count = {
-  arguments?: Maybe<Array<Order_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-  filter?: Maybe<Order_Bool_Exp>;
-  predicate: Int_Comparison_Exp;
-};
+  arguments?: Maybe<Array<Order_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+  filter?: Maybe<Order_Bool_Exp>
+  predicate: Int_Comparison_Exp
+}
 
 /** aggregate fields of "order" */
 export type Order_Aggregate_Fields = {
-  __typename?: 'order_aggregate_fields';
-  avg?: Maybe<Order_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Order_Max_Fields>;
-  min?: Maybe<Order_Min_Fields>;
-  stddev?: Maybe<Order_Stddev_Fields>;
-  stddev_pop?: Maybe<Order_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Order_Stddev_Samp_Fields>;
-  sum?: Maybe<Order_Sum_Fields>;
-  var_pop?: Maybe<Order_Var_Pop_Fields>;
-  var_samp?: Maybe<Order_Var_Samp_Fields>;
-  variance?: Maybe<Order_Variance_Fields>;
-};
-
+  __typename?: 'order_aggregate_fields'
+  avg?: Maybe<Order_Avg_Fields>
+  count: Scalars['Int']
+  max?: Maybe<Order_Max_Fields>
+  min?: Maybe<Order_Min_Fields>
+  stddev?: Maybe<Order_Stddev_Fields>
+  stddev_pop?: Maybe<Order_Stddev_Pop_Fields>
+  stddev_samp?: Maybe<Order_Stddev_Samp_Fields>
+  sum?: Maybe<Order_Sum_Fields>
+  var_pop?: Maybe<Order_Var_Pop_Fields>
+  var_samp?: Maybe<Order_Var_Samp_Fields>
+  variance?: Maybe<Order_Variance_Fields>
+}
 
 /** aggregate fields of "order" */
 export type Order_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Order_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
+  columns?: Maybe<Array<Order_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
 
 /** order by aggregate values of table "order" */
 export type Order_Aggregate_Order_By = {
-  avg?: Maybe<Order_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Order_Max_Order_By>;
-  min?: Maybe<Order_Min_Order_By>;
-  stddev?: Maybe<Order_Stddev_Order_By>;
-  stddev_pop?: Maybe<Order_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Order_Stddev_Samp_Order_By>;
-  sum?: Maybe<Order_Sum_Order_By>;
-  var_pop?: Maybe<Order_Var_Pop_Order_By>;
-  var_samp?: Maybe<Order_Var_Samp_Order_By>;
-  variance?: Maybe<Order_Variance_Order_By>;
-};
+  avg?: Maybe<Order_Avg_Order_By>
+  count?: Maybe<Order_By>
+  max?: Maybe<Order_Max_Order_By>
+  min?: Maybe<Order_Min_Order_By>
+  stddev?: Maybe<Order_Stddev_Order_By>
+  stddev_pop?: Maybe<Order_Stddev_Pop_Order_By>
+  stddev_samp?: Maybe<Order_Stddev_Samp_Order_By>
+  sum?: Maybe<Order_Sum_Order_By>
+  var_pop?: Maybe<Order_Var_Pop_Order_By>
+  var_samp?: Maybe<Order_Var_Samp_Order_By>
+  variance?: Maybe<Order_Variance_Order_By>
+}
 
 /** input type for inserting array relation for remote table "order" */
 export type Order_Arr_Rel_Insert_Input = {
-  data: Array<Order_Insert_Input>;
+  data: Array<Order_Insert_Input>
   /** upsert condition */
-  on_conflict?: Maybe<Order_On_Conflict>;
-};
+  on_conflict?: Maybe<Order_On_Conflict>
+}
 
 /** aggregate avg on columns */
 export type Order_Avg_Fields = {
-  __typename?: 'order_avg_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_avg_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by avg() on columns of table "order" */
 export type Order_Avg_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** Boolean expression to filter rows from the table "order". All fields are combined with a logical 'AND'. */
 export type Order_Bool_Exp = {
-  _and?: Maybe<Array<Order_Bool_Exp>>;
-  _not?: Maybe<Order_Bool_Exp>;
-  _or?: Maybe<Array<Order_Bool_Exp>>;
-  customer?: Maybe<Customer_Bool_Exp>;
-  customer_id?: Maybe<Int_Comparison_Exp>;
-  discount_price?: Maybe<String_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  order_date?: Maybe<String_Comparison_Exp>;
-  product?: Maybe<String_Comparison_Exp>;
-  purchase_price?: Maybe<String_Comparison_Exp>;
-  transaction_id?: Maybe<String_Comparison_Exp>;
-};
+  _and?: Maybe<Array<Order_Bool_Exp>>
+  _not?: Maybe<Order_Bool_Exp>
+  _or?: Maybe<Array<Order_Bool_Exp>>
+  customer?: Maybe<Customer_Bool_Exp>
+  customer_id?: Maybe<Int_Comparison_Exp>
+  discount_price?: Maybe<String_Comparison_Exp>
+  id?: Maybe<Int_Comparison_Exp>
+  order_date?: Maybe<String_Comparison_Exp>
+  product?: Maybe<String_Comparison_Exp>
+  purchase_price?: Maybe<String_Comparison_Exp>
+  transaction_id?: Maybe<String_Comparison_Exp>
+}
 
 /** column ordering options */
 export enum Order_By {
@@ -1019,111 +977,111 @@ export enum Order_By {
   /** in descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = 'desc_nulls_last',
 }
 
 /** unique or primary key constraints on table "order" */
 export enum Order_Constraint {
   /** unique or primary key constraint on columns "id" */
-  OrderPkey = 'order_pkey'
+  OrderPkey = 'order_pkey',
 }
 
 /** input type for incrementing numeric columns in table "order" */
 export type Order_Inc_Input = {
-  customer_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-};
+  customer_id?: Maybe<Scalars['Int']>
+  id?: Maybe<Scalars['Int']>
+}
 
 /** input type for inserting data into table "order" */
 export type Order_Insert_Input = {
-  customer?: Maybe<Customer_Obj_Rel_Insert_Input>;
-  customer_id?: Maybe<Scalars['Int']>;
-  discount_price?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  order_date?: Maybe<Scalars['String']>;
-  product?: Maybe<Scalars['String']>;
-  purchase_price?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['String']>;
-};
+  customer?: Maybe<Customer_Obj_Rel_Insert_Input>
+  customer_id?: Maybe<Scalars['Int']>
+  discount_price?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  order_date?: Maybe<Scalars['String']>
+  product?: Maybe<Scalars['String']>
+  purchase_price?: Maybe<Scalars['String']>
+  transaction_id?: Maybe<Scalars['String']>
+}
 
 /** aggregate max on columns */
 export type Order_Max_Fields = {
-  __typename?: 'order_max_fields';
-  customer_id?: Maybe<Scalars['Int']>;
-  discount_price?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  order_date?: Maybe<Scalars['String']>;
-  product?: Maybe<Scalars['String']>;
-  purchase_price?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['String']>;
-};
+  __typename?: 'order_max_fields'
+  customer_id?: Maybe<Scalars['Int']>
+  discount_price?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  order_date?: Maybe<Scalars['String']>
+  product?: Maybe<Scalars['String']>
+  purchase_price?: Maybe<Scalars['String']>
+  transaction_id?: Maybe<Scalars['String']>
+}
 
 /** order by max() on columns of table "order" */
 export type Order_Max_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  discount_price?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  order_date?: Maybe<Order_By>;
-  product?: Maybe<Order_By>;
-  purchase_price?: Maybe<Order_By>;
-  transaction_id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  discount_price?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  order_date?: Maybe<Order_By>
+  product?: Maybe<Order_By>
+  purchase_price?: Maybe<Order_By>
+  transaction_id?: Maybe<Order_By>
+}
 
 /** aggregate min on columns */
 export type Order_Min_Fields = {
-  __typename?: 'order_min_fields';
-  customer_id?: Maybe<Scalars['Int']>;
-  discount_price?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  order_date?: Maybe<Scalars['String']>;
-  product?: Maybe<Scalars['String']>;
-  purchase_price?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['String']>;
-};
+  __typename?: 'order_min_fields'
+  customer_id?: Maybe<Scalars['Int']>
+  discount_price?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  order_date?: Maybe<Scalars['String']>
+  product?: Maybe<Scalars['String']>
+  purchase_price?: Maybe<Scalars['String']>
+  transaction_id?: Maybe<Scalars['String']>
+}
 
 /** order by min() on columns of table "order" */
 export type Order_Min_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  discount_price?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  order_date?: Maybe<Order_By>;
-  product?: Maybe<Order_By>;
-  purchase_price?: Maybe<Order_By>;
-  transaction_id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  discount_price?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  order_date?: Maybe<Order_By>
+  product?: Maybe<Order_By>
+  purchase_price?: Maybe<Order_By>
+  transaction_id?: Maybe<Order_By>
+}
 
 /** response of any mutation on the table "order" */
 export type Order_Mutation_Response = {
-  __typename?: 'order_mutation_response';
+  __typename?: 'order_mutation_response'
   /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
-  returning: Array<Order>;
-};
+  returning: Array<Order>
+}
 
 /** on_conflict condition type for table "order" */
 export type Order_On_Conflict = {
-  constraint: Order_Constraint;
-  update_columns?: Array<Order_Update_Column>;
-  where?: Maybe<Order_Bool_Exp>;
-};
+  constraint: Order_Constraint
+  update_columns?: Array<Order_Update_Column>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 /** Ordering options when selecting data from "order". */
 export type Order_Order_By = {
-  customer?: Maybe<Customer_Order_By>;
-  customer_id?: Maybe<Order_By>;
-  discount_price?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  order_date?: Maybe<Order_By>;
-  product?: Maybe<Order_By>;
-  purchase_price?: Maybe<Order_By>;
-  transaction_id?: Maybe<Order_By>;
-};
+  customer?: Maybe<Customer_Order_By>
+  customer_id?: Maybe<Order_By>
+  discount_price?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  order_date?: Maybe<Order_By>
+  product?: Maybe<Order_By>
+  purchase_price?: Maybe<Order_By>
+  transaction_id?: Maybe<Order_By>
+}
 
 /** primary key columns input for table: order */
 export type Order_Pk_Columns_Input = {
-  id: Scalars['Int'];
-};
+  id: Scalars['Int']
+}
 
 /** select columns of table "order" */
 export enum Order_Select_Column {
@@ -1140,90 +1098,90 @@ export enum Order_Select_Column {
   /** column name */
   PurchasePrice = 'purchase_price',
   /** column name */
-  TransactionId = 'transaction_id'
+  TransactionId = 'transaction_id',
 }
 
 /** input type for updating data in table "order" */
 export type Order_Set_Input = {
-  customer_id?: Maybe<Scalars['Int']>;
-  discount_price?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  order_date?: Maybe<Scalars['String']>;
-  product?: Maybe<Scalars['String']>;
-  purchase_price?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['String']>;
-};
+  customer_id?: Maybe<Scalars['Int']>
+  discount_price?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  order_date?: Maybe<Scalars['String']>
+  product?: Maybe<Scalars['String']>
+  purchase_price?: Maybe<Scalars['String']>
+  transaction_id?: Maybe<Scalars['String']>
+}
 
 /** aggregate stddev on columns */
 export type Order_Stddev_Fields = {
-  __typename?: 'order_stddev_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_stddev_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by stddev() on columns of table "order" */
 export type Order_Stddev_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** aggregate stddev_pop on columns */
 export type Order_Stddev_Pop_Fields = {
-  __typename?: 'order_stddev_pop_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_stddev_pop_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by stddev_pop() on columns of table "order" */
 export type Order_Stddev_Pop_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** aggregate stddev_samp on columns */
 export type Order_Stddev_Samp_Fields = {
-  __typename?: 'order_stddev_samp_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_stddev_samp_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by stddev_samp() on columns of table "order" */
 export type Order_Stddev_Samp_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** Streaming cursor of the table "order" */
 export type Order_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Order_Stream_Cursor_Value_Input;
+  initial_value: Order_Stream_Cursor_Value_Input
   /** cursor ordering */
-  ordering?: Maybe<Cursor_Ordering>;
-};
+  ordering?: Maybe<Cursor_Ordering>
+}
 
 /** Initial value of the column from where the streaming should start */
 export type Order_Stream_Cursor_Value_Input = {
-  customer_id?: Maybe<Scalars['Int']>;
-  discount_price?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  order_date?: Maybe<Scalars['String']>;
-  product?: Maybe<Scalars['String']>;
-  purchase_price?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['String']>;
-};
+  customer_id?: Maybe<Scalars['Int']>
+  discount_price?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  order_date?: Maybe<Scalars['String']>
+  product?: Maybe<Scalars['String']>
+  purchase_price?: Maybe<Scalars['String']>
+  transaction_id?: Maybe<Scalars['String']>
+}
 
 /** aggregate sum on columns */
 export type Order_Sum_Fields = {
-  __typename?: 'order_sum_fields';
-  customer_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-};
+  __typename?: 'order_sum_fields'
+  customer_id?: Maybe<Scalars['Int']>
+  id?: Maybe<Scalars['Int']>
+}
 
 /** order by sum() on columns of table "order" */
 export type Order_Sum_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** update columns of table "order" */
 export enum Order_Update_Column {
@@ -1240,202 +1198,201 @@ export enum Order_Update_Column {
   /** column name */
   PurchasePrice = 'purchase_price',
   /** column name */
-  TransactionId = 'transaction_id'
+  TransactionId = 'transaction_id',
 }
 
 export type Order_Updates = {
   /** increments the numeric columns with given value of the filtered values */
-  _inc?: Maybe<Order_Inc_Input>;
+  _inc?: Maybe<Order_Inc_Input>
   /** sets the columns of the filtered rows to the given values */
-  _set?: Maybe<Order_Set_Input>;
+  _set?: Maybe<Order_Set_Input>
   /** filter the rows which have to be updated */
-  where: Order_Bool_Exp;
-};
+  where: Order_Bool_Exp
+}
 
 /** aggregate var_pop on columns */
 export type Order_Var_Pop_Fields = {
-  __typename?: 'order_var_pop_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_var_pop_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by var_pop() on columns of table "order" */
 export type Order_Var_Pop_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** aggregate var_samp on columns */
 export type Order_Var_Samp_Fields = {
-  __typename?: 'order_var_samp_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_var_samp_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by var_samp() on columns of table "order" */
 export type Order_Var_Samp_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** aggregate variance on columns */
 export type Order_Variance_Fields = {
-  __typename?: 'order_variance_fields';
-  customer_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-};
+  __typename?: 'order_variance_fields'
+  customer_id?: Maybe<Scalars['Float']>
+  id?: Maybe<Scalars['Float']>
+}
 
 /** order by variance() on columns of table "order" */
 export type Order_Variance_Order_By = {
-  customer_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-};
+  customer_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+}
 
 /** columns and relationships of "profile_users" */
 export type Profile_Users = {
-  __typename?: 'profile_users';
-  id: Scalars['uuid'];
+  __typename?: 'profile_users'
+  id: Scalars['uuid']
   /** An object relationship */
-  profile: Profiles;
-  profile_id: Scalars['uuid'];
+  profile: Profiles
+  profile_id: Scalars['uuid']
   /** An object relationship */
-  user: Users;
-  user_id: Scalars['uuid'];
-};
+  user: Users
+  user_id: Scalars['uuid']
+}
 
 /** aggregated selection of "profile_users" */
 export type Profile_Users_Aggregate = {
-  __typename?: 'profile_users_aggregate';
-  aggregate?: Maybe<Profile_Users_Aggregate_Fields>;
-  nodes: Array<Profile_Users>;
-};
+  __typename?: 'profile_users_aggregate'
+  aggregate?: Maybe<Profile_Users_Aggregate_Fields>
+  nodes: Array<Profile_Users>
+}
 
 export type Profile_Users_Aggregate_Bool_Exp = {
-  count?: Maybe<Profile_Users_Aggregate_Bool_Exp_Count>;
-};
+  count?: Maybe<Profile_Users_Aggregate_Bool_Exp_Count>
+}
 
 export type Profile_Users_Aggregate_Bool_Exp_Count = {
-  arguments?: Maybe<Array<Profile_Users_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-  filter?: Maybe<Profile_Users_Bool_Exp>;
-  predicate: Int_Comparison_Exp;
-};
+  arguments?: Maybe<Array<Profile_Users_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+  filter?: Maybe<Profile_Users_Bool_Exp>
+  predicate: Int_Comparison_Exp
+}
 
 /** aggregate fields of "profile_users" */
 export type Profile_Users_Aggregate_Fields = {
-  __typename?: 'profile_users_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Profile_Users_Max_Fields>;
-  min?: Maybe<Profile_Users_Min_Fields>;
-};
-
+  __typename?: 'profile_users_aggregate_fields'
+  count: Scalars['Int']
+  max?: Maybe<Profile_Users_Max_Fields>
+  min?: Maybe<Profile_Users_Min_Fields>
+}
 
 /** aggregate fields of "profile_users" */
 export type Profile_Users_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Profile_Users_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
+  columns?: Maybe<Array<Profile_Users_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
 
 /** order by aggregate values of table "profile_users" */
 export type Profile_Users_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Profile_Users_Max_Order_By>;
-  min?: Maybe<Profile_Users_Min_Order_By>;
-};
+  count?: Maybe<Order_By>
+  max?: Maybe<Profile_Users_Max_Order_By>
+  min?: Maybe<Profile_Users_Min_Order_By>
+}
 
 /** input type for inserting array relation for remote table "profile_users" */
 export type Profile_Users_Arr_Rel_Insert_Input = {
-  data: Array<Profile_Users_Insert_Input>;
+  data: Array<Profile_Users_Insert_Input>
   /** upsert condition */
-  on_conflict?: Maybe<Profile_Users_On_Conflict>;
-};
+  on_conflict?: Maybe<Profile_Users_On_Conflict>
+}
 
 /** Boolean expression to filter rows from the table "profile_users". All fields are combined with a logical 'AND'. */
 export type Profile_Users_Bool_Exp = {
-  _and?: Maybe<Array<Profile_Users_Bool_Exp>>;
-  _not?: Maybe<Profile_Users_Bool_Exp>;
-  _or?: Maybe<Array<Profile_Users_Bool_Exp>>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  profile?: Maybe<Profiles_Bool_Exp>;
-  profile_id?: Maybe<Uuid_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id?: Maybe<Uuid_Comparison_Exp>;
-};
+  _and?: Maybe<Array<Profile_Users_Bool_Exp>>
+  _not?: Maybe<Profile_Users_Bool_Exp>
+  _or?: Maybe<Array<Profile_Users_Bool_Exp>>
+  id?: Maybe<Uuid_Comparison_Exp>
+  profile?: Maybe<Profiles_Bool_Exp>
+  profile_id?: Maybe<Uuid_Comparison_Exp>
+  user?: Maybe<Users_Bool_Exp>
+  user_id?: Maybe<Uuid_Comparison_Exp>
+}
 
 /** unique or primary key constraints on table "profile_users" */
 export enum Profile_Users_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ProfileUsersPkey = 'profile_users_pkey'
+  ProfileUsersPkey = 'profile_users_pkey',
 }
 
 /** input type for inserting data into table "profile_users" */
 export type Profile_Users_Insert_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  profile?: Maybe<Profiles_Obj_Rel_Insert_Input>;
-  profile_id?: Maybe<Scalars['uuid']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id?: Maybe<Scalars['uuid']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  profile?: Maybe<Profiles_Obj_Rel_Insert_Input>
+  profile_id?: Maybe<Scalars['uuid']>
+  user?: Maybe<Users_Obj_Rel_Insert_Input>
+  user_id?: Maybe<Scalars['uuid']>
+}
 
 /** aggregate max on columns */
 export type Profile_Users_Max_Fields = {
-  __typename?: 'profile_users_max_fields';
-  id?: Maybe<Scalars['uuid']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-  user_id?: Maybe<Scalars['uuid']>;
-};
+  __typename?: 'profile_users_max_fields'
+  id?: Maybe<Scalars['uuid']>
+  profile_id?: Maybe<Scalars['uuid']>
+  user_id?: Maybe<Scalars['uuid']>
+}
 
 /** order by max() on columns of table "profile_users" */
 export type Profile_Users_Max_Order_By = {
-  id?: Maybe<Order_By>;
-  profile_id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
-};
+  id?: Maybe<Order_By>
+  profile_id?: Maybe<Order_By>
+  user_id?: Maybe<Order_By>
+}
 
 /** aggregate min on columns */
 export type Profile_Users_Min_Fields = {
-  __typename?: 'profile_users_min_fields';
-  id?: Maybe<Scalars['uuid']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-  user_id?: Maybe<Scalars['uuid']>;
-};
+  __typename?: 'profile_users_min_fields'
+  id?: Maybe<Scalars['uuid']>
+  profile_id?: Maybe<Scalars['uuid']>
+  user_id?: Maybe<Scalars['uuid']>
+}
 
 /** order by min() on columns of table "profile_users" */
 export type Profile_Users_Min_Order_By = {
-  id?: Maybe<Order_By>;
-  profile_id?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
-};
+  id?: Maybe<Order_By>
+  profile_id?: Maybe<Order_By>
+  user_id?: Maybe<Order_By>
+}
 
 /** response of any mutation on the table "profile_users" */
 export type Profile_Users_Mutation_Response = {
-  __typename?: 'profile_users_mutation_response';
+  __typename?: 'profile_users_mutation_response'
   /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
-  returning: Array<Profile_Users>;
-};
+  returning: Array<Profile_Users>
+}
 
 /** on_conflict condition type for table "profile_users" */
 export type Profile_Users_On_Conflict = {
-  constraint: Profile_Users_Constraint;
-  update_columns?: Array<Profile_Users_Update_Column>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
+  constraint: Profile_Users_Constraint
+  update_columns?: Array<Profile_Users_Update_Column>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 /** Ordering options when selecting data from "profile_users". */
 export type Profile_Users_Order_By = {
-  id?: Maybe<Order_By>;
-  profile?: Maybe<Profiles_Order_By>;
-  profile_id?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id?: Maybe<Order_By>;
-};
+  id?: Maybe<Order_By>
+  profile?: Maybe<Profiles_Order_By>
+  profile_id?: Maybe<Order_By>
+  user?: Maybe<Users_Order_By>
+  user_id?: Maybe<Order_By>
+}
 
 /** primary key columns input for table: profile_users */
 export type Profile_Users_Pk_Columns_Input = {
-  id: Scalars['uuid'];
-};
+  id: Scalars['uuid']
+}
 
 /** select columns of table "profile_users" */
 export enum Profile_Users_Select_Column {
@@ -1444,30 +1401,30 @@ export enum Profile_Users_Select_Column {
   /** column name */
   ProfileId = 'profile_id',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
 }
 
 /** input type for updating data in table "profile_users" */
 export type Profile_Users_Set_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-  user_id?: Maybe<Scalars['uuid']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  profile_id?: Maybe<Scalars['uuid']>
+  user_id?: Maybe<Scalars['uuid']>
+}
 
 /** Streaming cursor of the table "profile_users" */
 export type Profile_Users_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Profile_Users_Stream_Cursor_Value_Input;
+  initial_value: Profile_Users_Stream_Cursor_Value_Input
   /** cursor ordering */
-  ordering?: Maybe<Cursor_Ordering>;
-};
+  ordering?: Maybe<Cursor_Ordering>
+}
 
 /** Initial value of the column from where the streaming should start */
 export type Profile_Users_Stream_Cursor_Value_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-  user_id?: Maybe<Scalars['uuid']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  profile_id?: Maybe<Scalars['uuid']>
+  user_id?: Maybe<Scalars['uuid']>
+}
 
 /** update columns of table "profile_users" */
 export enum Profile_Users_Update_Column {
@@ -1476,812 +1433,763 @@ export enum Profile_Users_Update_Column {
   /** column name */
   ProfileId = 'profile_id',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
 }
 
 export type Profile_Users_Updates = {
   /** sets the columns of the filtered rows to the given values */
-  _set?: Maybe<Profile_Users_Set_Input>;
+  _set?: Maybe<Profile_Users_Set_Input>
   /** filter the rows which have to be updated */
-  where: Profile_Users_Bool_Exp;
-};
+  where: Profile_Users_Bool_Exp
+}
 
 /** columns and relationships of "profiles" */
 export type Profiles = {
-  __typename?: 'profiles';
-  id: Scalars['uuid'];
-  nickname: Scalars['String'];
+  __typename?: 'profiles'
+  id: Scalars['uuid']
+  nickname: Scalars['String']
   /** An array relationship */
-  profile_users: Array<Profile_Users>;
+  profile_users: Array<Profile_Users>
   /** An aggregate relationship */
-  profile_users_aggregate: Profile_Users_Aggregate;
+  profile_users_aggregate: Profile_Users_Aggregate
   /** An object relationship */
-  user?: Maybe<Users>;
-};
-
+  user?: Maybe<Users>
+}
 
 /** columns and relationships of "profiles" */
 export type ProfilesProfile_UsersArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 /** columns and relationships of "profiles" */
 export type ProfilesProfile_Users_AggregateArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 /** aggregated selection of "profiles" */
 export type Profiles_Aggregate = {
-  __typename?: 'profiles_aggregate';
-  aggregate?: Maybe<Profiles_Aggregate_Fields>;
-  nodes: Array<Profiles>;
-};
+  __typename?: 'profiles_aggregate'
+  aggregate?: Maybe<Profiles_Aggregate_Fields>
+  nodes: Array<Profiles>
+}
 
 /** aggregate fields of "profiles" */
 export type Profiles_Aggregate_Fields = {
-  __typename?: 'profiles_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Profiles_Max_Fields>;
-  min?: Maybe<Profiles_Min_Fields>;
-};
-
+  __typename?: 'profiles_aggregate_fields'
+  count: Scalars['Int']
+  max?: Maybe<Profiles_Max_Fields>
+  min?: Maybe<Profiles_Min_Fields>
+}
 
 /** aggregate fields of "profiles" */
 export type Profiles_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Profiles_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
+  columns?: Maybe<Array<Profiles_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
 
 /** Boolean expression to filter rows from the table "profiles". All fields are combined with a logical 'AND'. */
 export type Profiles_Bool_Exp = {
-  _and?: Maybe<Array<Profiles_Bool_Exp>>;
-  _not?: Maybe<Profiles_Bool_Exp>;
-  _or?: Maybe<Array<Profiles_Bool_Exp>>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  nickname?: Maybe<String_Comparison_Exp>;
-  profile_users?: Maybe<Profile_Users_Bool_Exp>;
-  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Bool_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-};
+  _and?: Maybe<Array<Profiles_Bool_Exp>>
+  _not?: Maybe<Profiles_Bool_Exp>
+  _or?: Maybe<Array<Profiles_Bool_Exp>>
+  id?: Maybe<Uuid_Comparison_Exp>
+  nickname?: Maybe<String_Comparison_Exp>
+  profile_users?: Maybe<Profile_Users_Bool_Exp>
+  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Bool_Exp>
+  user?: Maybe<Users_Bool_Exp>
+}
 
 /** unique or primary key constraints on table "profiles" */
 export enum Profiles_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ProfilePkey = 'profile_pkey'
+  ProfilePkey = 'profile_pkey',
 }
 
 /** input type for inserting data into table "profiles" */
 export type Profiles_Insert_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  nickname?: Maybe<Scalars['String']>;
-  profile_users?: Maybe<Profile_Users_Arr_Rel_Insert_Input>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-};
+  id?: Maybe<Scalars['uuid']>
+  nickname?: Maybe<Scalars['String']>
+  profile_users?: Maybe<Profile_Users_Arr_Rel_Insert_Input>
+  user?: Maybe<Users_Obj_Rel_Insert_Input>
+}
 
 /** aggregate max on columns */
 export type Profiles_Max_Fields = {
-  __typename?: 'profiles_max_fields';
-  id?: Maybe<Scalars['uuid']>;
-  nickname?: Maybe<Scalars['String']>;
-};
+  __typename?: 'profiles_max_fields'
+  id?: Maybe<Scalars['uuid']>
+  nickname?: Maybe<Scalars['String']>
+}
 
 /** aggregate min on columns */
 export type Profiles_Min_Fields = {
-  __typename?: 'profiles_min_fields';
-  id?: Maybe<Scalars['uuid']>;
-  nickname?: Maybe<Scalars['String']>;
-};
+  __typename?: 'profiles_min_fields'
+  id?: Maybe<Scalars['uuid']>
+  nickname?: Maybe<Scalars['String']>
+}
 
 /** response of any mutation on the table "profiles" */
 export type Profiles_Mutation_Response = {
-  __typename?: 'profiles_mutation_response';
+  __typename?: 'profiles_mutation_response'
   /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
-  returning: Array<Profiles>;
-};
+  returning: Array<Profiles>
+}
 
 /** input type for inserting object relation for remote table "profiles" */
 export type Profiles_Obj_Rel_Insert_Input = {
-  data: Profiles_Insert_Input;
+  data: Profiles_Insert_Input
   /** upsert condition */
-  on_conflict?: Maybe<Profiles_On_Conflict>;
-};
+  on_conflict?: Maybe<Profiles_On_Conflict>
+}
 
 /** on_conflict condition type for table "profiles" */
 export type Profiles_On_Conflict = {
-  constraint: Profiles_Constraint;
-  update_columns?: Array<Profiles_Update_Column>;
-  where?: Maybe<Profiles_Bool_Exp>;
-};
+  constraint: Profiles_Constraint
+  update_columns?: Array<Profiles_Update_Column>
+  where?: Maybe<Profiles_Bool_Exp>
+}
 
 /** Ordering options when selecting data from "profiles". */
 export type Profiles_Order_By = {
-  id?: Maybe<Order_By>;
-  nickname?: Maybe<Order_By>;
-  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Order_By>;
-  user?: Maybe<Users_Order_By>;
-};
+  id?: Maybe<Order_By>
+  nickname?: Maybe<Order_By>
+  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Order_By>
+  user?: Maybe<Users_Order_By>
+}
 
 /** primary key columns input for table: profiles */
 export type Profiles_Pk_Columns_Input = {
-  id: Scalars['uuid'];
-};
+  id: Scalars['uuid']
+}
 
 /** select columns of table "profiles" */
 export enum Profiles_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Nickname = 'nickname'
+  Nickname = 'nickname',
 }
 
 /** input type for updating data in table "profiles" */
 export type Profiles_Set_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  nickname?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  nickname?: Maybe<Scalars['String']>
+}
 
 /** Streaming cursor of the table "profiles" */
 export type Profiles_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Profiles_Stream_Cursor_Value_Input;
+  initial_value: Profiles_Stream_Cursor_Value_Input
   /** cursor ordering */
-  ordering?: Maybe<Cursor_Ordering>;
-};
+  ordering?: Maybe<Cursor_Ordering>
+}
 
 /** Initial value of the column from where the streaming should start */
 export type Profiles_Stream_Cursor_Value_Input = {
-  id?: Maybe<Scalars['uuid']>;
-  nickname?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['uuid']>
+  nickname?: Maybe<Scalars['String']>
+}
 
 /** update columns of table "profiles" */
 export enum Profiles_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Nickname = 'nickname'
+  Nickname = 'nickname',
 }
 
 export type Profiles_Updates = {
   /** sets the columns of the filtered rows to the given values */
-  _set?: Maybe<Profiles_Set_Input>;
+  _set?: Maybe<Profiles_Set_Input>
   /** filter the rows which have to be updated */
-  where: Profiles_Bool_Exp;
-};
+  where: Profiles_Bool_Exp
+}
 
 export type Query_Root = {
-  __typename?: 'query_root';
+  __typename?: 'query_root'
   /** fetch data from the table: "customer" */
-  customer: Array<Customer>;
+  customer: Array<Customer>
   /** fetch aggregated fields from the table: "customer" */
-  customer_aggregate: Customer_Aggregate;
+  customer_aggregate: Customer_Aggregate
   /** fetch data from the table: "customer" using primary key columns */
-  customer_by_pk?: Maybe<Customer>;
+  customer_by_pk?: Maybe<Customer>
   /** fetch data from the table: "groups" */
-  groups: Array<Groups>;
+  groups: Array<Groups>
   /** fetch aggregated fields from the table: "groups" */
-  groups_aggregate: Groups_Aggregate;
+  groups_aggregate: Groups_Aggregate
   /** fetch data from the table: "groups" using primary key columns */
-  groups_by_pk?: Maybe<Groups>;
+  groups_by_pk?: Maybe<Groups>
   /** fetch data from the table: "order" */
-  order: Array<Order>;
+  order: Array<Order>
   /** fetch aggregated fields from the table: "order" */
-  order_aggregate: Order_Aggregate;
+  order_aggregate: Order_Aggregate
   /** fetch data from the table: "order" using primary key columns */
-  order_by_pk?: Maybe<Order>;
+  order_by_pk?: Maybe<Order>
   /** An array relationship */
-  profile_users: Array<Profile_Users>;
+  profile_users: Array<Profile_Users>
   /** An aggregate relationship */
-  profile_users_aggregate: Profile_Users_Aggregate;
+  profile_users_aggregate: Profile_Users_Aggregate
   /** fetch data from the table: "profile_users" using primary key columns */
-  profile_users_by_pk?: Maybe<Profile_Users>;
+  profile_users_by_pk?: Maybe<Profile_Users>
   /** fetch data from the table: "profiles" */
-  profiles: Array<Profiles>;
+  profiles: Array<Profiles>
   /** fetch aggregated fields from the table: "profiles" */
-  profiles_aggregate: Profiles_Aggregate;
+  profiles_aggregate: Profiles_Aggregate
   /** fetch data from the table: "profiles" using primary key columns */
-  profiles_by_pk?: Maybe<Profiles>;
+  profiles_by_pk?: Maybe<Profiles>
   /** An array relationship */
-  users: Array<Users>;
+  users: Array<Users>
   /** An aggregate relationship */
-  users_aggregate: Users_Aggregate;
+  users_aggregate: Users_Aggregate
   /** fetch data from the table: "users" using primary key columns */
-  users_by_pk?: Maybe<Users>;
-};
-
+  users_by_pk?: Maybe<Users>
+}
 
 export type Query_RootCustomerArgs = {
-  distinct_on?: Maybe<Array<Customer_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Customer_Order_By>>;
-  where?: Maybe<Customer_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Customer_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Customer_Order_By>>
+  where?: Maybe<Customer_Bool_Exp>
+}
 
 export type Query_RootCustomer_AggregateArgs = {
-  distinct_on?: Maybe<Array<Customer_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Customer_Order_By>>;
-  where?: Maybe<Customer_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Customer_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Customer_Order_By>>
+  where?: Maybe<Customer_Bool_Exp>
+}
 
 export type Query_RootCustomer_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
+  id: Scalars['Int']
+}
 
 export type Query_RootGroupsArgs = {
-  distinct_on?: Maybe<Array<Groups_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Groups_Order_By>>;
-  where?: Maybe<Groups_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Groups_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Groups_Order_By>>
+  where?: Maybe<Groups_Bool_Exp>
+}
 
 export type Query_RootGroups_AggregateArgs = {
-  distinct_on?: Maybe<Array<Groups_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Groups_Order_By>>;
-  where?: Maybe<Groups_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Groups_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Groups_Order_By>>
+  where?: Maybe<Groups_Bool_Exp>
+}
 
 export type Query_RootGroups_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Query_RootOrderArgs = {
-  distinct_on?: Maybe<Array<Order_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Order_Order_By>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Order_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Order_Order_By>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 export type Query_RootOrder_AggregateArgs = {
-  distinct_on?: Maybe<Array<Order_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Order_Order_By>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Order_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Order_Order_By>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 export type Query_RootOrder_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
+  id: Scalars['Int']
+}
 
 export type Query_RootProfile_UsersArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 export type Query_RootProfile_Users_AggregateArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 export type Query_RootProfile_Users_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Query_RootProfilesArgs = {
-  distinct_on?: Maybe<Array<Profiles_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profiles_Order_By>>;
-  where?: Maybe<Profiles_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profiles_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profiles_Order_By>>
+  where?: Maybe<Profiles_Bool_Exp>
+}
 
 export type Query_RootProfiles_AggregateArgs = {
-  distinct_on?: Maybe<Array<Profiles_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profiles_Order_By>>;
-  where?: Maybe<Profiles_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profiles_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profiles_Order_By>>
+  where?: Maybe<Profiles_Bool_Exp>
+}
 
 export type Query_RootProfiles_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Query_RootUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Users_Order_By>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 export type Query_RootUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Users_Order_By>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 export type Query_RootUsers_By_PkArgs = {
-  id: Scalars['uuid'];
-};
+  id: Scalars['uuid']
+}
 
 export type Subscription_Root = {
-  __typename?: 'subscription_root';
+  __typename?: 'subscription_root'
   /** fetch data from the table: "customer" */
-  customer: Array<Customer>;
+  customer: Array<Customer>
   /** fetch aggregated fields from the table: "customer" */
-  customer_aggregate: Customer_Aggregate;
+  customer_aggregate: Customer_Aggregate
   /** fetch data from the table: "customer" using primary key columns */
-  customer_by_pk?: Maybe<Customer>;
+  customer_by_pk?: Maybe<Customer>
   /** fetch data from the table in a streaming manner: "customer" */
-  customer_stream: Array<Customer>;
+  customer_stream: Array<Customer>
   /** fetch data from the table: "groups" */
-  groups: Array<Groups>;
+  groups: Array<Groups>
   /** fetch aggregated fields from the table: "groups" */
-  groups_aggregate: Groups_Aggregate;
+  groups_aggregate: Groups_Aggregate
   /** fetch data from the table: "groups" using primary key columns */
-  groups_by_pk?: Maybe<Groups>;
+  groups_by_pk?: Maybe<Groups>
   /** fetch data from the table in a streaming manner: "groups" */
-  groups_stream: Array<Groups>;
+  groups_stream: Array<Groups>
   /** fetch data from the table: "order" */
-  order: Array<Order>;
+  order: Array<Order>
   /** fetch aggregated fields from the table: "order" */
-  order_aggregate: Order_Aggregate;
+  order_aggregate: Order_Aggregate
   /** fetch data from the table: "order" using primary key columns */
-  order_by_pk?: Maybe<Order>;
+  order_by_pk?: Maybe<Order>
   /** fetch data from the table in a streaming manner: "order" */
-  order_stream: Array<Order>;
+  order_stream: Array<Order>
   /** An array relationship */
-  profile_users: Array<Profile_Users>;
+  profile_users: Array<Profile_Users>
   /** An aggregate relationship */
-  profile_users_aggregate: Profile_Users_Aggregate;
+  profile_users_aggregate: Profile_Users_Aggregate
   /** fetch data from the table: "profile_users" using primary key columns */
-  profile_users_by_pk?: Maybe<Profile_Users>;
+  profile_users_by_pk?: Maybe<Profile_Users>
   /** fetch data from the table in a streaming manner: "profile_users" */
-  profile_users_stream: Array<Profile_Users>;
+  profile_users_stream: Array<Profile_Users>
   /** fetch data from the table: "profiles" */
-  profiles: Array<Profiles>;
+  profiles: Array<Profiles>
   /** fetch aggregated fields from the table: "profiles" */
-  profiles_aggregate: Profiles_Aggregate;
+  profiles_aggregate: Profiles_Aggregate
   /** fetch data from the table: "profiles" using primary key columns */
-  profiles_by_pk?: Maybe<Profiles>;
+  profiles_by_pk?: Maybe<Profiles>
   /** fetch data from the table in a streaming manner: "profiles" */
-  profiles_stream: Array<Profiles>;
+  profiles_stream: Array<Profiles>
   /** An array relationship */
-  users: Array<Users>;
+  users: Array<Users>
   /** An aggregate relationship */
-  users_aggregate: Users_Aggregate;
+  users_aggregate: Users_Aggregate
   /** fetch data from the table: "users" using primary key columns */
-  users_by_pk?: Maybe<Users>;
+  users_by_pk?: Maybe<Users>
   /** fetch data from the table in a streaming manner: "users" */
-  users_stream: Array<Users>;
-};
-
+  users_stream: Array<Users>
+}
 
 export type Subscription_RootCustomerArgs = {
-  distinct_on?: Maybe<Array<Customer_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Customer_Order_By>>;
-  where?: Maybe<Customer_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Customer_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Customer_Order_By>>
+  where?: Maybe<Customer_Bool_Exp>
+}
 
 export type Subscription_RootCustomer_AggregateArgs = {
-  distinct_on?: Maybe<Array<Customer_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Customer_Order_By>>;
-  where?: Maybe<Customer_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Customer_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Customer_Order_By>>
+  where?: Maybe<Customer_Bool_Exp>
+}
 
 export type Subscription_RootCustomer_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
+  id: Scalars['Int']
+}
 
 export type Subscription_RootCustomer_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<Maybe<Customer_Stream_Cursor_Input>>;
-  where?: Maybe<Customer_Bool_Exp>;
-};
-
+  batch_size: Scalars['Int']
+  cursor: Array<Maybe<Customer_Stream_Cursor_Input>>
+  where?: Maybe<Customer_Bool_Exp>
+}
 
 export type Subscription_RootGroupsArgs = {
-  distinct_on?: Maybe<Array<Groups_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Groups_Order_By>>;
-  where?: Maybe<Groups_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Groups_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Groups_Order_By>>
+  where?: Maybe<Groups_Bool_Exp>
+}
 
 export type Subscription_RootGroups_AggregateArgs = {
-  distinct_on?: Maybe<Array<Groups_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Groups_Order_By>>;
-  where?: Maybe<Groups_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Groups_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Groups_Order_By>>
+  where?: Maybe<Groups_Bool_Exp>
+}
 
 export type Subscription_RootGroups_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Subscription_RootGroups_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<Maybe<Groups_Stream_Cursor_Input>>;
-  where?: Maybe<Groups_Bool_Exp>;
-};
-
+  batch_size: Scalars['Int']
+  cursor: Array<Maybe<Groups_Stream_Cursor_Input>>
+  where?: Maybe<Groups_Bool_Exp>
+}
 
 export type Subscription_RootOrderArgs = {
-  distinct_on?: Maybe<Array<Order_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Order_Order_By>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Order_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Order_Order_By>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 export type Subscription_RootOrder_AggregateArgs = {
-  distinct_on?: Maybe<Array<Order_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Order_Order_By>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Order_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Order_Order_By>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 export type Subscription_RootOrder_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
+  id: Scalars['Int']
+}
 
 export type Subscription_RootOrder_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<Maybe<Order_Stream_Cursor_Input>>;
-  where?: Maybe<Order_Bool_Exp>;
-};
-
+  batch_size: Scalars['Int']
+  cursor: Array<Maybe<Order_Stream_Cursor_Input>>
+  where?: Maybe<Order_Bool_Exp>
+}
 
 export type Subscription_RootProfile_UsersArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 export type Subscription_RootProfile_Users_AggregateArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 export type Subscription_RootProfile_Users_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Subscription_RootProfile_Users_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<Maybe<Profile_Users_Stream_Cursor_Input>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  batch_size: Scalars['Int']
+  cursor: Array<Maybe<Profile_Users_Stream_Cursor_Input>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 export type Subscription_RootProfilesArgs = {
-  distinct_on?: Maybe<Array<Profiles_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profiles_Order_By>>;
-  where?: Maybe<Profiles_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profiles_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profiles_Order_By>>
+  where?: Maybe<Profiles_Bool_Exp>
+}
 
 export type Subscription_RootProfiles_AggregateArgs = {
-  distinct_on?: Maybe<Array<Profiles_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profiles_Order_By>>;
-  where?: Maybe<Profiles_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profiles_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profiles_Order_By>>
+  where?: Maybe<Profiles_Bool_Exp>
+}
 
 export type Subscription_RootProfiles_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Subscription_RootProfiles_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<Maybe<Profiles_Stream_Cursor_Input>>;
-  where?: Maybe<Profiles_Bool_Exp>;
-};
-
+  batch_size: Scalars['Int']
+  cursor: Array<Maybe<Profiles_Stream_Cursor_Input>>
+  where?: Maybe<Profiles_Bool_Exp>
+}
 
 export type Subscription_RootUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Users_Order_By>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 export type Subscription_RootUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Users_Order_By>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 export type Subscription_RootUsers_By_PkArgs = {
-  id: Scalars['uuid'];
-};
-
+  id: Scalars['uuid']
+}
 
 export type Subscription_RootUsers_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<Maybe<Users_Stream_Cursor_Input>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
+  batch_size: Scalars['Int']
+  cursor: Array<Maybe<Users_Stream_Cursor_Input>>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
-  _eq?: Maybe<Scalars['timestamptz']>;
-  _gt?: Maybe<Scalars['timestamptz']>;
-  _gte?: Maybe<Scalars['timestamptz']>;
-  _in?: Maybe<Array<Scalars['timestamptz']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['timestamptz']>;
-  _lte?: Maybe<Scalars['timestamptz']>;
-  _neq?: Maybe<Scalars['timestamptz']>;
-  _nin?: Maybe<Array<Scalars['timestamptz']>>;
-};
+  _eq?: Maybe<Scalars['timestamptz']>
+  _gt?: Maybe<Scalars['timestamptz']>
+  _gte?: Maybe<Scalars['timestamptz']>
+  _in?: Maybe<Array<Scalars['timestamptz']>>
+  _is_null?: Maybe<Scalars['Boolean']>
+  _lt?: Maybe<Scalars['timestamptz']>
+  _lte?: Maybe<Scalars['timestamptz']>
+  _neq?: Maybe<Scalars['timestamptz']>
+  _nin?: Maybe<Array<Scalars['timestamptz']>>
+}
 
 /** columns and relationships of "users" */
 export type Users = {
-  __typename?: 'users';
-  created_at: Scalars['timestamptz'];
+  __typename?: 'users'
+  created_at: Scalars['timestamptz']
   /** An object relationship */
-  group?: Maybe<Groups>;
-  group_id?: Maybe<Scalars['uuid']>;
-  id: Scalars['uuid'];
-  name: Scalars['String'];
+  group?: Maybe<Groups>
+  group_id?: Maybe<Scalars['uuid']>
+  id: Scalars['uuid']
+  name: Scalars['String']
   /** An object relationship */
-  profile?: Maybe<Profiles>;
-  profile_id?: Maybe<Scalars['uuid']>;
+  profile?: Maybe<Profiles>
+  profile_id?: Maybe<Scalars['uuid']>
   /** An array relationship */
-  profile_users: Array<Profile_Users>;
+  profile_users: Array<Profile_Users>
   /** An aggregate relationship */
-  profile_users_aggregate: Profile_Users_Aggregate;
-};
-
+  profile_users_aggregate: Profile_Users_Aggregate
+}
 
 /** columns and relationships of "users" */
 export type UsersProfile_UsersArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
-
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 /** columns and relationships of "users" */
 export type UsersProfile_Users_AggregateArgs = {
-  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Profile_Users_Order_By>>;
-  where?: Maybe<Profile_Users_Bool_Exp>;
-};
+  distinct_on?: Maybe<Array<Profile_Users_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<Profile_Users_Order_By>>
+  where?: Maybe<Profile_Users_Bool_Exp>
+}
 
 /** aggregated selection of "users" */
 export type Users_Aggregate = {
-  __typename?: 'users_aggregate';
-  aggregate?: Maybe<Users_Aggregate_Fields>;
-  nodes: Array<Users>;
-};
+  __typename?: 'users_aggregate'
+  aggregate?: Maybe<Users_Aggregate_Fields>
+  nodes: Array<Users>
+}
 
 export type Users_Aggregate_Bool_Exp = {
-  count?: Maybe<Users_Aggregate_Bool_Exp_Count>;
-};
+  count?: Maybe<Users_Aggregate_Bool_Exp_Count>
+}
 
 export type Users_Aggregate_Bool_Exp_Count = {
-  arguments?: Maybe<Array<Users_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-  filter?: Maybe<Users_Bool_Exp>;
-  predicate: Int_Comparison_Exp;
-};
+  arguments?: Maybe<Array<Users_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+  filter?: Maybe<Users_Bool_Exp>
+  predicate: Int_Comparison_Exp
+}
 
 /** aggregate fields of "users" */
 export type Users_Aggregate_Fields = {
-  __typename?: 'users_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Users_Max_Fields>;
-  min?: Maybe<Users_Min_Fields>;
-};
-
+  __typename?: 'users_aggregate_fields'
+  count: Scalars['Int']
+  max?: Maybe<Users_Max_Fields>
+  min?: Maybe<Users_Min_Fields>
+}
 
 /** aggregate fields of "users" */
 export type Users_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Users_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
+  columns?: Maybe<Array<Users_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
 
 /** order by aggregate values of table "users" */
 export type Users_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Users_Max_Order_By>;
-  min?: Maybe<Users_Min_Order_By>;
-};
+  count?: Maybe<Order_By>
+  max?: Maybe<Users_Max_Order_By>
+  min?: Maybe<Users_Min_Order_By>
+}
 
 /** input type for inserting array relation for remote table "users" */
 export type Users_Arr_Rel_Insert_Input = {
-  data: Array<Users_Insert_Input>;
+  data: Array<Users_Insert_Input>
   /** upsert condition */
-  on_conflict?: Maybe<Users_On_Conflict>;
-};
+  on_conflict?: Maybe<Users_On_Conflict>
+}
 
 /** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
 export type Users_Bool_Exp = {
-  _and?: Maybe<Array<Users_Bool_Exp>>;
-  _not?: Maybe<Users_Bool_Exp>;
-  _or?: Maybe<Array<Users_Bool_Exp>>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  group?: Maybe<Groups_Bool_Exp>;
-  group_id?: Maybe<Uuid_Comparison_Exp>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  profile?: Maybe<Profiles_Bool_Exp>;
-  profile_id?: Maybe<Uuid_Comparison_Exp>;
-  profile_users?: Maybe<Profile_Users_Bool_Exp>;
-  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Bool_Exp>;
-};
+  _and?: Maybe<Array<Users_Bool_Exp>>
+  _not?: Maybe<Users_Bool_Exp>
+  _or?: Maybe<Array<Users_Bool_Exp>>
+  created_at?: Maybe<Timestamptz_Comparison_Exp>
+  group?: Maybe<Groups_Bool_Exp>
+  group_id?: Maybe<Uuid_Comparison_Exp>
+  id?: Maybe<Uuid_Comparison_Exp>
+  name?: Maybe<String_Comparison_Exp>
+  profile?: Maybe<Profiles_Bool_Exp>
+  profile_id?: Maybe<Uuid_Comparison_Exp>
+  profile_users?: Maybe<Profile_Users_Bool_Exp>
+  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Bool_Exp>
+}
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
   /** unique or primary key constraint on columns "id" */
   UsersPkey = 'users_pkey',
   /** unique or primary key constraint on columns "profile_id" */
-  UsersProfileIdKey = 'users_profile_id_key'
+  UsersProfileIdKey = 'users_profile_id_key',
 }
 
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  group?: Maybe<Groups_Obj_Rel_Insert_Input>;
-  group_id?: Maybe<Scalars['uuid']>;
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-  profile?: Maybe<Profiles_Obj_Rel_Insert_Input>;
-  profile_id?: Maybe<Scalars['uuid']>;
-  profile_users?: Maybe<Profile_Users_Arr_Rel_Insert_Input>;
-};
+  created_at?: Maybe<Scalars['timestamptz']>
+  group?: Maybe<Groups_Obj_Rel_Insert_Input>
+  group_id?: Maybe<Scalars['uuid']>
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+  profile?: Maybe<Profiles_Obj_Rel_Insert_Input>
+  profile_id?: Maybe<Scalars['uuid']>
+  profile_users?: Maybe<Profile_Users_Arr_Rel_Insert_Input>
+}
 
 /** aggregate max on columns */
 export type Users_Max_Fields = {
-  __typename?: 'users_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  group_id?: Maybe<Scalars['uuid']>;
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-};
+  __typename?: 'users_max_fields'
+  created_at?: Maybe<Scalars['timestamptz']>
+  group_id?: Maybe<Scalars['uuid']>
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+  profile_id?: Maybe<Scalars['uuid']>
+}
 
 /** order by max() on columns of table "users" */
 export type Users_Max_Order_By = {
-  created_at?: Maybe<Order_By>;
-  group_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  profile_id?: Maybe<Order_By>;
-};
+  created_at?: Maybe<Order_By>
+  group_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  name?: Maybe<Order_By>
+  profile_id?: Maybe<Order_By>
+}
 
 /** aggregate min on columns */
 export type Users_Min_Fields = {
-  __typename?: 'users_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  group_id?: Maybe<Scalars['uuid']>;
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-};
+  __typename?: 'users_min_fields'
+  created_at?: Maybe<Scalars['timestamptz']>
+  group_id?: Maybe<Scalars['uuid']>
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+  profile_id?: Maybe<Scalars['uuid']>
+}
 
 /** order by min() on columns of table "users" */
 export type Users_Min_Order_By = {
-  created_at?: Maybe<Order_By>;
-  group_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  profile_id?: Maybe<Order_By>;
-};
+  created_at?: Maybe<Order_By>
+  group_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  name?: Maybe<Order_By>
+  profile_id?: Maybe<Order_By>
+}
 
 /** response of any mutation on the table "users" */
 export type Users_Mutation_Response = {
-  __typename?: 'users_mutation_response';
+  __typename?: 'users_mutation_response'
   /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
-  returning: Array<Users>;
-};
+  returning: Array<Users>
+}
 
 /** input type for inserting object relation for remote table "users" */
 export type Users_Obj_Rel_Insert_Input = {
-  data: Users_Insert_Input;
+  data: Users_Insert_Input
   /** upsert condition */
-  on_conflict?: Maybe<Users_On_Conflict>;
-};
+  on_conflict?: Maybe<Users_On_Conflict>
+}
 
 /** on_conflict condition type for table "users" */
 export type Users_On_Conflict = {
-  constraint: Users_Constraint;
-  update_columns?: Array<Users_Update_Column>;
-  where?: Maybe<Users_Bool_Exp>;
-};
+  constraint: Users_Constraint
+  update_columns?: Array<Users_Update_Column>
+  where?: Maybe<Users_Bool_Exp>
+}
 
 /** Ordering options when selecting data from "users". */
 export type Users_Order_By = {
-  created_at?: Maybe<Order_By>;
-  group?: Maybe<Groups_Order_By>;
-  group_id?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  profile?: Maybe<Profiles_Order_By>;
-  profile_id?: Maybe<Order_By>;
-  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Order_By>;
-};
+  created_at?: Maybe<Order_By>
+  group?: Maybe<Groups_Order_By>
+  group_id?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  name?: Maybe<Order_By>
+  profile?: Maybe<Profiles_Order_By>
+  profile_id?: Maybe<Order_By>
+  profile_users_aggregate?: Maybe<Profile_Users_Aggregate_Order_By>
+}
 
 /** primary key columns input for table: users */
 export type Users_Pk_Columns_Input = {
-  id: Scalars['uuid'];
-};
+  id: Scalars['uuid']
+}
 
 /** select columns of table "users" */
 export enum Users_Select_Column {
@@ -2294,34 +2202,34 @@ export enum Users_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  ProfileId = 'profile_id'
+  ProfileId = 'profile_id',
 }
 
 /** input type for updating data in table "users" */
 export type Users_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  group_id?: Maybe<Scalars['uuid']>;
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-};
+  created_at?: Maybe<Scalars['timestamptz']>
+  group_id?: Maybe<Scalars['uuid']>
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+  profile_id?: Maybe<Scalars['uuid']>
+}
 
 /** Streaming cursor of the table "users" */
 export type Users_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Users_Stream_Cursor_Value_Input;
+  initial_value: Users_Stream_Cursor_Value_Input
   /** cursor ordering */
-  ordering?: Maybe<Cursor_Ordering>;
-};
+  ordering?: Maybe<Cursor_Ordering>
+}
 
 /** Initial value of the column from where the streaming should start */
 export type Users_Stream_Cursor_Value_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  group_id?: Maybe<Scalars['uuid']>;
-  id?: Maybe<Scalars['uuid']>;
-  name?: Maybe<Scalars['String']>;
-  profile_id?: Maybe<Scalars['uuid']>;
-};
+  created_at?: Maybe<Scalars['timestamptz']>
+  group_id?: Maybe<Scalars['uuid']>
+  id?: Maybe<Scalars['uuid']>
+  name?: Maybe<Scalars['String']>
+  profile_id?: Maybe<Scalars['uuid']>
+}
 
 /** update columns of table "users" */
 export enum Users_Update_Column {
@@ -2334,79 +2242,109 @@ export enum Users_Update_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  ProfileId = 'profile_id'
+  ProfileId = 'profile_id',
 }
 
 export type Users_Updates = {
   /** sets the columns of the filtered rows to the given values */
-  _set?: Maybe<Users_Set_Input>;
+  _set?: Maybe<Users_Set_Input>
   /** filter the rows which have to be updated */
-  where: Users_Bool_Exp;
-};
-
+  where: Users_Bool_Exp
+}
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
-  _eq?: Maybe<Scalars['uuid']>;
-  _gt?: Maybe<Scalars['uuid']>;
-  _gte?: Maybe<Scalars['uuid']>;
-  _in?: Maybe<Array<Scalars['uuid']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['uuid']>;
-  _lte?: Maybe<Scalars['uuid']>;
-  _neq?: Maybe<Scalars['uuid']>;
-  _nin?: Maybe<Array<Scalars['uuid']>>;
-};
+  _eq?: Maybe<Scalars['uuid']>
+  _gt?: Maybe<Scalars['uuid']>
+  _gte?: Maybe<Scalars['uuid']>
+  _in?: Maybe<Array<Scalars['uuid']>>
+  _is_null?: Maybe<Scalars['Boolean']>
+  _lt?: Maybe<Scalars['uuid']>
+  _lte?: Maybe<Scalars['uuid']>
+  _neq?: Maybe<Scalars['uuid']>
+  _nin?: Maybe<Array<Scalars['uuid']>>
+}
 
-export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetUsersQueryVariables = Exact<{ [key: string]: never }>
 
+export type GetUsersQuery = {
+  __typename?: 'query_root'
+  users: Array<{ __typename?: 'users'; id: any; name: string; created_at: any }>
+}
 
-export type GetUsersQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: any, name: string, created_at: any }> };
+export type GetUsersIdsQueryVariables = Exact<{ [key: string]: never }>
 
-export type GetUsersIdsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetUsersIdsQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: any }> };
+export type GetUsersIdsQuery = {
+  __typename?: 'query_root'
+  users: Array<{ __typename?: 'users'; id: string }>
+}
 
 export type GetUserByIdQueryVariables = Exact<{
-  id: Scalars['uuid'];
-}>;
+  id: Scalars['uuid']
+}>
 
-
-export type GetUserByIdQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: any, name: string, created_at: any } | null };
+export type GetUserByIdQuery = {
+  __typename?: 'query_root'
+  users_by_pk?: {
+    __typename?: 'users'
+    id: any
+    name: string
+    created_at: any
+  } | null
+}
 
 export type CreateUserMutationVariables = Exact<{
-  name: Scalars['String'];
-}>;
+  name: Scalars['String']
+}>
 
-
-export type CreateUserMutation = { __typename?: 'mutation_root', insert_users_one?: { __typename?: 'users', id: any, name: string, created_at: any } | null };
+export type CreateUserMutation = {
+  __typename?: 'mutation_root'
+  insert_users_one?: {
+    __typename?: 'users'
+    id: any
+    name: string
+    created_at: any
+  } | null
+}
 
 export type DeleteUserMutationVariables = Exact<{
-  id: Scalars['uuid'];
-}>;
+  id: Scalars['uuid']
+}>
 
-
-export type DeleteUserMutation = { __typename?: 'mutation_root', delete_users_by_pk?: { __typename?: 'users', id: any, name: string, created_at: any } | null };
+export type DeleteUserMutation = {
+  __typename?: 'mutation_root'
+  delete_users_by_pk?: {
+    __typename?: 'users'
+    id: any
+    name: string
+    created_at: any
+  } | null
+}
 
 export type UpdateUserMutationVariables = Exact<{
-  id: Scalars['uuid'];
-  name: Scalars['String'];
-}>;
+  id: Scalars['uuid']
+  name: Scalars['String']
+}>
 
-
-export type UpdateUserMutation = { __typename?: 'mutation_root', update_users_by_pk?: { __typename?: 'users', id: any, name: string, created_at: any } | null };
-
+export type UpdateUserMutation = {
+  __typename?: 'mutation_root'
+  update_users_by_pk?: {
+    __typename?: 'users'
+    id: any
+    name: string
+    created_at: any
+  } | null
+}
 
 export const GetUsersDocument = gql`
-    query GetUsers {
-  users(order_by: {created_at: desc}) {
-    id
-    name
-    created_at
+  query GetUsers {
+    users(order_by: { created_at: desc }) {
+      id
+      name
+      created_at
+    }
   }
-}
-    `;
+`
 
 /**
  * __useGetUsersQuery__
@@ -2423,24 +2361,42 @@ export const GetUsersDocument = gql`
  *   },
  * });
  */
-export function useGetUsersQuery(baseOptions?: Apollo.QueryHookOptions<GetUsersQuery, GetUsersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetUsersQuery, GetUsersQueryVariables>(GetUsersDocument, options);
-      }
-export function useGetUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUsersQuery, GetUsersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetUsersQuery, GetUsersQueryVariables>(GetUsersDocument, options);
-        }
-export type GetUsersQueryHookResult = ReturnType<typeof useGetUsersQuery>;
-export type GetUsersLazyQueryHookResult = ReturnType<typeof useGetUsersLazyQuery>;
-export type GetUsersQueryResult = Apollo.QueryResult<GetUsersQuery, GetUsersQueryVariables>;
-export const GetUsersIdsDocument = gql`
-    query GetUsersIds {
-  users(order_by: {created_at: desc}) {
-    id
-  }
+export function useGetUsersQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetUsersQuery, GetUsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetUsersQuery, GetUsersQueryVariables>(
+    GetUsersDocument,
+    options
+  )
 }
-    `;
+export function useGetUsersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUsersQuery,
+    GetUsersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetUsersQuery, GetUsersQueryVariables>(
+    GetUsersDocument,
+    options
+  )
+}
+export type GetUsersQueryHookResult = ReturnType<typeof useGetUsersQuery>
+export type GetUsersLazyQueryHookResult = ReturnType<
+  typeof useGetUsersLazyQuery
+>
+export type GetUsersQueryResult = Apollo.QueryResult<
+  GetUsersQuery,
+  GetUsersQueryVariables
+>
+export const GetUsersIdsDocument = gql`
+  query GetUsersIds {
+    users(order_by: { created_at: desc }) {
+      id
+    }
+  }
+`
 
 /**
  * __useGetUsersIdsQuery__
@@ -2457,26 +2413,47 @@ export const GetUsersIdsDocument = gql`
  *   },
  * });
  */
-export function useGetUsersIdsQuery(baseOptions?: Apollo.QueryHookOptions<GetUsersIdsQuery, GetUsersIdsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetUsersIdsQuery, GetUsersIdsQueryVariables>(GetUsersIdsDocument, options);
-      }
-export function useGetUsersIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUsersIdsQuery, GetUsersIdsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetUsersIdsQuery, GetUsersIdsQueryVariables>(GetUsersIdsDocument, options);
-        }
-export type GetUsersIdsQueryHookResult = ReturnType<typeof useGetUsersIdsQuery>;
-export type GetUsersIdsLazyQueryHookResult = ReturnType<typeof useGetUsersIdsLazyQuery>;
-export type GetUsersIdsQueryResult = Apollo.QueryResult<GetUsersIdsQuery, GetUsersIdsQueryVariables>;
-export const GetUserByIdDocument = gql`
-    query GetUserById($id: uuid!) {
-  users_by_pk(id: $id) {
-    id
-    name
-    created_at
-  }
+export function useGetUsersIdsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetUsersIdsQuery,
+    GetUsersIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetUsersIdsQuery, GetUsersIdsQueryVariables>(
+    GetUsersIdsDocument,
+    options
+  )
 }
-    `;
+export function useGetUsersIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUsersIdsQuery,
+    GetUsersIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetUsersIdsQuery, GetUsersIdsQueryVariables>(
+    GetUsersIdsDocument,
+    options
+  )
+}
+export type GetUsersIdsQueryHookResult = ReturnType<typeof useGetUsersIdsQuery>
+export type GetUsersIdsLazyQueryHookResult = ReturnType<
+  typeof useGetUsersIdsLazyQuery
+>
+export type GetUsersIdsQueryResult = Apollo.QueryResult<
+  GetUsersIdsQuery,
+  GetUsersIdsQueryVariables
+>
+export const GetUserByIdDocument = gql`
+  query GetUserById($id: uuid!) {
+    users_by_pk(id: $id) {
+      id
+      name
+      created_at
+    }
+  }
+`
 
 /**
  * __useGetUserByIdQuery__
@@ -2494,27 +2471,51 @@ export const GetUserByIdDocument = gql`
  *   },
  * });
  */
-export function useGetUserByIdQuery(baseOptions: Apollo.QueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
-      }
-export function useGetUserByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
-        }
-export type GetUserByIdQueryHookResult = ReturnType<typeof useGetUserByIdQuery>;
-export type GetUserByIdLazyQueryHookResult = ReturnType<typeof useGetUserByIdLazyQuery>;
-export type GetUserByIdQueryResult = Apollo.QueryResult<GetUserByIdQuery, GetUserByIdQueryVariables>;
-export const CreateUserDocument = gql`
-    mutation CreateUser($name: String!) {
-  insert_users_one(object: {name: $name}) {
-    id
-    name
-    created_at
-  }
+export function useGetUserByIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetUserByIdQuery,
+    GetUserByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(
+    GetUserByIdDocument,
+    options
+  )
 }
-    `;
-export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
+export function useGetUserByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUserByIdQuery,
+    GetUserByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(
+    GetUserByIdDocument,
+    options
+  )
+}
+export type GetUserByIdQueryHookResult = ReturnType<typeof useGetUserByIdQuery>
+export type GetUserByIdLazyQueryHookResult = ReturnType<
+  typeof useGetUserByIdLazyQuery
+>
+export type GetUserByIdQueryResult = Apollo.QueryResult<
+  GetUserByIdQuery,
+  GetUserByIdQueryVariables
+>
+export const CreateUserDocument = gql`
+  mutation CreateUser($name: String!) {
+    insert_users_one(object: { name: $name }) {
+      id
+      name
+      created_at
+    }
+  }
+`
+export type CreateUserMutationFn = Apollo.MutationFunction<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>
 
 /**
  * __useCreateUserMutation__
@@ -2533,23 +2534,39 @@ export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, C
  *   },
  * });
  */
-export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, options);
-      }
-export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
-export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
-export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
-export const DeleteUserDocument = gql`
-    mutation DeleteUser($id: uuid!) {
-  delete_users_by_pk(id: $id) {
-    id
-    name
-    created_at
-  }
+export function useCreateUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateUserMutation,
+    CreateUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
+    CreateUserDocument,
+    options
+  )
 }
-    `;
-export type DeleteUserMutationFn = Apollo.MutationFunction<DeleteUserMutation, DeleteUserMutationVariables>;
+export type CreateUserMutationHookResult = ReturnType<
+  typeof useCreateUserMutation
+>
+export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>
+export const DeleteUserDocument = gql`
+  mutation DeleteUser($id: uuid!) {
+    delete_users_by_pk(id: $id) {
+      id
+      name
+      created_at
+    }
+  }
+`
+export type DeleteUserMutationFn = Apollo.MutationFunction<
+  DeleteUserMutation,
+  DeleteUserMutationVariables
+>
 
 /**
  * __useDeleteUserMutation__
@@ -2568,23 +2585,39 @@ export type DeleteUserMutationFn = Apollo.MutationFunction<DeleteUserMutation, D
  *   },
  * });
  */
-export function useDeleteUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteUserMutation, DeleteUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(DeleteUserDocument, options);
-      }
-export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutation>;
-export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>;
-export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
-export const UpdateUserDocument = gql`
-    mutation UpdateUser($id: uuid!, $name: String!) {
-  update_users_by_pk(pk_columns: {id: $id}, _set: {name: $name}) {
-    id
-    name
-    created_at
-  }
+export function useDeleteUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteUserMutation,
+    DeleteUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(
+    DeleteUserDocument,
+    options
+  )
 }
-    `;
-export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
+export type DeleteUserMutationHookResult = ReturnType<
+  typeof useDeleteUserMutation
+>
+export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>
+export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<
+  DeleteUserMutation,
+  DeleteUserMutationVariables
+>
+export const UpdateUserDocument = gql`
+  mutation UpdateUser($id: uuid!, $name: String!) {
+    update_users_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
+      id
+      name
+      created_at
+    }
+  }
+`
+export type UpdateUserMutationFn = Apollo.MutationFunction<
+  UpdateUserMutation,
+  UpdateUserMutationVariables
+>
 
 /**
  * __useUpdateUserMutation__
@@ -2604,10 +2637,23 @@ export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, U
  *   },
  * });
  */
-export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, options);
-      }
-export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
-export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
-export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
+export function useUpdateUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateUserMutation,
+    UpdateUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(
+    UpdateUserDocument,
+    options
+  )
+}
+export type UpdateUserMutationHookResult = ReturnType<
+  typeof useUpdateUserMutation
+>
+export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>
+export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
+  UpdateUserMutation,
+  UpdateUserMutationVariables
+>
