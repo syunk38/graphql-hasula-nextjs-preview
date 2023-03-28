@@ -1,6 +1,6 @@
-import { VFC } from 'react'
+import { FormEvent, VFC } from 'react'
 import { useCreateForm } from '../hooks/useCreateForm'
-import { Child } from './child'
+import { Child } from './Child'
 
 export const CreateUser: VFC = () => {
   const {
@@ -13,7 +13,7 @@ export const CreateUser: VFC = () => {
   } = useCreateForm()
   return (
     <>
-      {console.log('CreateUser rendered')}
+      {/* {console.log('CreateUser rendered')} */}
       <p className="mb-3 font-bold">Custom Hook + useCallback + memo</p>
       <div className="mb-3 flex flex-col justify-center items-center">
         <label>Text</label>
