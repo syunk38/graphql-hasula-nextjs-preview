@@ -33,7 +33,7 @@ const UserDetail: VFC<Props> = ({ user }) => {
       <Link href="/hasura-ssg">
         <div className="flex cursor-pointer mt-12">
           <ChevronDoubleLeftIcon
-            data-testid="auth-to-main"
+            data-testid="back-to-main"
             className="h-5 w-5 mr-3 text-blue-500"
           />
           Back to main-ssg-page
